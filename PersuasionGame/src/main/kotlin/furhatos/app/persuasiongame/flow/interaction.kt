@@ -3,10 +3,10 @@ package furhatos.app.persuasiongame.flow
 import furhatos.app.persuasiongame.mode
 import furhatos.app.persuasiongame.name
 import furhatos.app.persuasiongame.nlu.*
+import furhatos.app.persuasiongame.questions_answered
 import furhatos.flow.kotlin.*
 import furhatos.app.persuasiongame.speech.*
 import furhatos.gestures.Gestures
-
 
 val Start : State = state(Interaction) {
 
@@ -16,6 +16,7 @@ val Start : State = state(Interaction) {
 
         if(playGame == true){
             users.current.mode = random("neutral", "friendly", "commanding")
+            users.current.questions_answered = 0
             goto(Introduction)
         } else {
             furhat.say("OK, next time! Bye")
@@ -133,18 +134,38 @@ val HiFurhat : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(255,255,255))
         furhat.say("I am here to help.")
         furhat.gesture(Gestures.Smile)
-        furhat.ledStrip.solid(java.awt.Color(0,0,0))
         goto(QuestionHint)
     }
 
     onResponse<ForceExit> {
-        furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("Game is Over")
-        goto(Idle)
+        goto(GameOver)
+    }
+
+    // __________Feedback is triggered by the robot__________
+    onResponse<CorrectAnswer> {
+        furhat.ledStrip.solid(java.awt.Color(0,255,0))
+        goto(CorrectAnswer)
+    }
+
+    onResponse<IncorrectAnswer> {
+        furhat.ledStrip.solid(java.awt.Color(255,0,0))
+        goto(IncorrectAnswer)
+    }
+
+    // ____________Feedback is triggered manually--___________
+    onButton(correctAnswerButton){
+        furhat.ledStrip.solid(java.awt.Color(0,255,0))
+        goto(CorrectAnswer)
+    }
+
+    onButton(incorrectAnswerButton){
+        furhat.ledStrip.solid(java.awt.Color(255,0,0))
+        goto(IncorrectAnswer)
     }
 
     onNoResponse{
-        val margin = 20
+        val margin = 10
         furhat.ledStrip.solid(
             java.awt.Color(
                 (80-margin..80+margin).random(),
@@ -152,7 +173,7 @@ val HiFurhat : State = state(Interaction) {
                 (80-margin..80+margin).random()
             )
         )
-        furhat.listen(timeout = 1000)
+        furhat.listen(timeout = 5000)
     }
 
     onResponse{
@@ -165,4 +186,19 @@ val HiFurhat : State = state(Interaction) {
         )
         furhat.listen(timeout = 1000)
     }
+}
+
+val GameOver : State = state(Interaction) {
+
+    onEntry {
+        furhat.ledStrip.solid(java.awt.Color(0,0,0))
+        furhat.say("End of the Game")
+        ROBOT.writeToFile(
+            users.current.name.toString(),
+            users.current.questions_answered,
+            users.current.mode.toString()
+        )
+        goto(Idle)
+    }
+
 }
