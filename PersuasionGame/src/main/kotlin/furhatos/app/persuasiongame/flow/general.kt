@@ -38,9 +38,9 @@ val Interaction: State = state {
                 furhat.glance(it)
             }
         } else {
-            goto(Idle)
             furhat.stopSpeaking()
             furhat.stopListening()
+            goto(GameOver)
         }
     }
 

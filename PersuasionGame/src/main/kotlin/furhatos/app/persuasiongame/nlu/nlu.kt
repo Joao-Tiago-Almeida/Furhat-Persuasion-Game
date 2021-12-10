@@ -49,3 +49,19 @@ class ForceExit(val name : Name? = null): Intent() {
         )
     }
 }
+
+class CorrectAnswer: Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "correct answer"
+        )
+    }
+}
+
+class IncorrectAnswer: Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "incorrect answer"
+        )
+    }
+}

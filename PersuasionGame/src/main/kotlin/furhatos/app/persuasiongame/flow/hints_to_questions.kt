@@ -1,10 +1,8 @@
 package furhatos.app.persuasiongame.flow
 
-import furhatos.app.persuasiongame.mode
+import furhatos.app.persuasiongame.*
 import furhatos.app.persuasiongame.nlu.*
-import furhatos.app.persuasiongame.speech.ask_question_number
-import furhatos.app.persuasiongame.speech.no_or_other_response_say
-import furhatos.app.persuasiongame.speech.other_response_ask
+import furhatos.app.persuasiongame.speech.*
 import furhatos.flow.kotlin.*
 
 val QuestionHint : State = state(Interaction) {
@@ -20,7 +18,7 @@ val QuestionHint : State = state(Interaction) {
                 furhat.say("Also the state of Silicon Valley")
             }
             "commanding" -> {
-                furhat.say("Easy answer! Choose California")
+                furhat.say("Easy answer! Hollywood is in the state of California !")
             }
             else -> {    // neutral
                 furhat.say("New York is known for the Status of Liberty, the Empire State Building, between others. But not for Hollywood.")
@@ -34,10 +32,10 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("Oh this one is tricky. I would say squid")
+                furhat.say("Oh! That is a tricky one. I would say squid.")
             }
             "commanding" -> {
-                furhat.say("You must choose squid")
+                furhat.say("You must choose squid ! Go on!")
             }
             else -> {    // neutral
                 furhat.say("The Squid! Its systemic heart pumps blood around its body, while its two branchial hearts pump oxygen through its gills.")
@@ -51,13 +49,13 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("I think that this question is not easy haha ! From what I know, I would say Refracting Telescope")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("I'm a hundred percent sure that it is the Refracting Telescope, choose that !")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("From what I know, the Microscope is the most recent invention")
             }
         }
         goto(HiFurhat)
@@ -68,13 +66,14 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("Oh ! I know that story, it is actually quite funny haha !")
+                furhat.say("It is the same thing than with coca-cola, company ! It used to be a medecine ! ")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("Based on my knowledge, Ketchup used to be a medecine")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("Logically, ketchup would have done a bad fuel because it is tomato based")
             }
         }
         goto(HiFurhat)
@@ -85,13 +84,14 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("For me, I don't have this problem because I'm allergic to Lobster")
+                furhat.say("So I'm always lucky")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("You have to answer Lobster, it seems obvious")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("As everyone in Sweden eat Shrimps all the year, I'm pretty sure it is not Shrimps")
             }
         }
         goto(HiFurhat)
@@ -102,13 +102,13 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("You have to think about the country of Adele Singer and Tea Time")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("I'm sure it's Big Ben Clock Tower, answer that !")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("From what I know, I would say that it is not Eiffel Tower")
             }
         }
         goto(HiFurhat)
@@ -119,13 +119,13 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("Haha, Brazil is the only country who's capital has merely the same name : Brasilia")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("Based on my data, I am sure to say that it is Brazilia")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("Rio de Janeiro is the answer that everyone gives, but it is actually wrong.")
             }
         }
         goto(HiFurhat)
@@ -136,13 +136,13 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("Newton is known for gravity but unfortunately he has not a chemical element")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("I know that one, it is Isaac Newton")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("Albert Einstein has one. It is called Einsteinium")
             }
         }
         goto(HiFurhat)
@@ -153,13 +153,15 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("Okay, I double checked that one because I was not sure and it is Istanbul in Turkey")
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("Let me check a map in my database")
+                delay(100)
+                furhat.say("You have to respond Istanbul in Turkey")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("St Petersburg is in the north west of Russia, so it is not that one")
             }
         }
         goto(HiFurhat)
@@ -170,13 +172,14 @@ val QuestionHint : State = state(Interaction) {
         delay(200)
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say("friendly mode")
+                furhat.say("Well, if the day before yesterday is the 31 of December, it means that the person is 21 years old.")
+                furhat.say("Thus, at the end of the year, the person will turn 22. And next year that person will be 23 years old." )
             }
             "commanding" -> {
-                furhat.say("commanding mode")
+                furhat.say("You must answer 31 December, it's logical for me")
             }
             else -> {    // neutral
-                furhat.say("neutral mode")
+                furhat.say("For me, it seems logical that it is not the 29th of February")
             }
         }
         goto(HiFurhat)
@@ -188,8 +191,7 @@ val QuestionHint : State = state(Interaction) {
     }
 
     onResponse{
-        furhat.say(no_or_other_response_say.random())
-        furhat.ask(other_response_ask.random(), timeout = 10000)
+        furhat.ask(ask_question_number.random(), timeout = 10000)
     }
 
 }
