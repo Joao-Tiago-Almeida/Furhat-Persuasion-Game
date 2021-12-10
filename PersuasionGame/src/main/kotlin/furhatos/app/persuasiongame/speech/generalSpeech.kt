@@ -53,12 +53,12 @@ val play_game = listOf(
 )
 
 val hi_furhat1 = listOf(
-    "During the next couple of minutes, I will be here to help you. Since I do not have mobility I cannot leave, but",
+    "During the next couple of minutes, I will be here to help you. Since I don't have mobility I can't leave, but",
     "Do not hesitate to ask me for a hint, although"
 )
 
 val hi_furhat2 = listOf(
-    "I will only respond when I hear the expression: ",
+    "I will respond when I hear the expression: ",
     "you have to say the magic word to activate me: "
 )
 
