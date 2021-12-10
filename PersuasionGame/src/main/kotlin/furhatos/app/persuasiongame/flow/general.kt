@@ -1,3 +1,5 @@
+@file:Suppress("UNREACHABLE_CODE")
+
 package furhatos.app.persuasiongame.flow
 
 import furhatos.flow.kotlin.*
@@ -28,6 +30,8 @@ val Interaction: State = state {
     onUserLeave(instant = true) {
         if (users.count > 0) {
             if (it == users.current) {
+                furhat.stopSpeaking()
+                furhat.stopListening()
                 furhat.attend(users.other)
                 goto(Start)
             } else {
@@ -35,6 +39,8 @@ val Interaction: State = state {
             }
         } else {
             goto(Idle)
+            furhat.stopSpeaking()
+            furhat.stopListening()
         }
     }
 
