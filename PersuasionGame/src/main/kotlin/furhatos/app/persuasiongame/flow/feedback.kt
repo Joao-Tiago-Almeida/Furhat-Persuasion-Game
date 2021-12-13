@@ -9,13 +9,15 @@ val incorrectAnswerButton = Button("Incorrect Answer")
 
 val CorrectAnswer : State = state(Interaction) {
     onEntry {
+        furhat.ledStrip.solid(java.awt.Color(0,255,0))
         users.current.questions_answered++
+        users.current.correct_answered++
         when (users.current.mode) {
             "friendly" -> {
                 furhat.say(friendly_correct_answer.random())
             }
-            "commanding" -> {
-                furhat.say(commanding_correct_answer.random())
+            "competent" -> {
+                furhat.say(competent_correct_answer.random())
             }
             else -> {    // neutral
                 furhat.say(neutral_correct_answer.random())
@@ -28,8 +30,8 @@ val CorrectAnswer : State = state(Interaction) {
                 "friendly" -> {
                     furhat.say(friendly_persuading.random())
                 }
-                "commanding" -> {
-                    furhat.say(commanding_persuading.random())
+                "competent" -> {
+                    furhat.say(competent_persuading.random())
                 }
                 else -> {    // neutral
                     furhat.say(neutral_persuading.random())
@@ -43,13 +45,15 @@ val CorrectAnswer : State = state(Interaction) {
 
 val IncorrectAnswer : State = state(Interaction) {
     onEntry {
+        furhat.ledStrip.solid(java.awt.Color(255,0,0))
         users.current.questions_answered++
+        users.current.incorrect_answered++
         when (users.current.mode) {
             "friendly" -> {
                 furhat.say(friendly_incorrect_answer.random())
             }
-            "commanding" -> {
-                furhat.say(commanding_incorrect_answer.random())
+            "competent" -> {
+                furhat.say(competent_incorrect_answer.random())
             }
             else -> {    // neutral
                 furhat.say(neutral_incorrect_answer.random())

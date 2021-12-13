@@ -50,18 +50,46 @@ class ForceExit(val name : Name? = null): Intent() {
     }
 }
 
-class CorrectAnswer: Intent() {
+class HintWord : EnumEntity(stemming = false, speechRecPhrases = true) {
+    override fun getEnum(lang: Language): List<String> {
+        return listOf("hint")
+    }
+}
+
+class Hint(val hint : HintWord? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "correct answer"
+            "I want an @hint",
+            "Please give me an @hint",
+            "@hint",
+            "an @hint",
+            "I want one more @hint",
+            "Can you give me one more @hint",
+            "yes, an @hint please",
+            "can I have one more @hint please",
+            "can I another @hint",
+            "please another @hint"
         )
     }
 }
 
-class IncorrectAnswer: Intent() {
+class AnswerWord : EnumEntity(stemming = false, speechRecPhrases = true) {
+    override fun getEnum(lang: Language): List<String> {
+        return listOf("answer")
+    }
+}
+
+class Answer(val answer : AnswerWord? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "incorrect answer"
+            "I want the @answer",
+            "Please give me an @answer",
+            "@answer",
+            "the @answer",
+            "Can you give me the @answer",
+            "yes, the @answer please",
+            "can I have the @answer please",
+            "Ok give the @answer"
         )
     }
 }

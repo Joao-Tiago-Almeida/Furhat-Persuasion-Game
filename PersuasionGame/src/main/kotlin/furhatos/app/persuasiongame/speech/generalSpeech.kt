@@ -54,7 +54,7 @@ val play_game = listOf(
 
 val hi_furhat1 = listOf(
     "During the next couple of minutes, I will be here to help you. Since I don't have mobility I can't leave, but",
-    "Do not hesitate to ask me for a hint, although"
+    "Do not hesitate to ask me for an hint, although"
 )
 
 val hi_furhat2 = listOf(
