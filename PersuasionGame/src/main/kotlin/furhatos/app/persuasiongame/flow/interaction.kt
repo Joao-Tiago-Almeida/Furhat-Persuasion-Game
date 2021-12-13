@@ -1,9 +1,7 @@
 package furhatos.app.persuasiongame.flow
 
-import furhatos.app.persuasiongame.mode
-import furhatos.app.persuasiongame.name
+import furhatos.app.persuasiongame.*
 import furhatos.app.persuasiongame.nlu.*
-import furhatos.app.persuasiongame.questions_answered
 import furhatos.flow.kotlin.*
 import furhatos.app.persuasiongame.speech.*
 import furhatos.gestures.Gestures
@@ -15,7 +13,7 @@ val Start : State = state(Interaction) {
         val playGame = furhat.askYN(play_game_question.random()){}
 
         if(playGame == true){
-            users.current.mode = random("neutral", "friendly", "commanding")
+            users.current.mode = random("neutral", "friendly", "competent")
             users.current.questions_answered = 0
             goto(Introduction)
         } else {
@@ -137,32 +135,12 @@ val HiFurhat : State = state(Interaction) {
         goto(QuestionHint)
     }
 
-    onResponse<ForceExit> {
-        furhat.say("Game is Over")
-        goto(GameOver)
-    }
-
-    // __________Feedback is triggered by the robot__________
-    onResponse<CorrectAnswer> {
-        furhat.ledStrip.solid(java.awt.Color(0,255,0))
-        goto(CorrectAnswer)
-    }
-
-    onResponse<IncorrectAnswer> {
-        furhat.ledStrip.solid(java.awt.Color(255,0,0))
-        goto(IncorrectAnswer)
-    }
+    onResponse<ForceExit> { goto(GameOver) }
 
     // ____________Feedback is triggered manually--___________
-    onButton(correctAnswerButton){
-        furhat.ledStrip.solid(java.awt.Color(0,255,0))
-        goto(CorrectAnswer)
-    }
+    onButton(correctAnswerButton){ goto(CorrectAnswer) }
 
-    onButton(incorrectAnswerButton){
-        furhat.ledStrip.solid(java.awt.Color(255,0,0))
-        goto(IncorrectAnswer)
-    }
+    onButton(incorrectAnswerButton){ goto(IncorrectAnswer) }
 
     onNoResponse{
         val margin = 10
@@ -188,15 +166,27 @@ val HiFurhat : State = state(Interaction) {
     }
 }
 
+// TODO complete with more info
 val GameOver : State = state(Interaction) {
-
     onEntry {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
-        furhat.say("End of the Game")
+        furhat.say("End of the Game, Thanks for playing")
         ROBOT.writeToFile(
             users.current.name.toString(),
             users.current.questions_answered,
-            users.current.mode.toString()
+            users.current.mode.toString(),
+            users.current.question1_hint_n,
+            users.current.question2_hint_n,
+            users.current.question3_hint_n,
+            users.current.question4_hint_n,
+            users.current.question5_hint_n,
+            users.current.question6_hint_n,
+            users.current.question7_hint_n,
+            users.current.question8_hint_n,
+            users.current.question9_hint_n,
+            users.current.question10_hint_n,
+            users.current.correct_answered,
+            users.current.incorrect_answered
         )
         goto(Idle)
     }

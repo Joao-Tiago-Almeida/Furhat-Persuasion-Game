@@ -32,13 +32,13 @@ val friendly_incorrect_answer = listOf(
     "you chose poorly"
 )
 
-val commanding_correct_answer = listOf(
+val competent_correct_answer = listOf(
     "Oh congratulations",
     "Nice job",
     "you chose wisely"
 )
 
-val commanding_incorrect_answer = listOf(
+val competent_incorrect_answer = listOf(
     "Dumb",
     "oh shit",
     "you chose poorly"
@@ -54,10 +54,11 @@ val neutral_persuading = listOf(
     "I am Neutral ROBOT and I am going to persuade you"
 )
 
-val commanding_persuading = listOf(
-    "I am Commanding ROBOT and I am going to persuade you",
-    "I am Commanding ROBOT and I am going to persuade you"
+val competent_persuading = listOf(
+    "I am competent ROBOT and I am going to persuade you",
+    "I am competent ROBOT and I am going to persuade you"
 )
+
 
 object ROBOT {
 
@@ -70,7 +71,10 @@ object ROBOT {
     /**
      * Writes the current list of jokes to a file
      */
-    fun writeToFile(name:String, n_question:Int, mode: String?) {
+    fun writeToFile(name:String, n_question:Int, mode: String?, n_hint_1:Int, n_hint_2:Int,
+                    n_hint_3:Int, n_hint_4:Int, n_hint_5:Int, n_hint_6:Int, n_hint_7:Int,
+                    n_hint_8:Int, n_hint_9:Int, n_hint_10:Int, n_correct:Int, n_incorrect:Int)
+    {
         if (!file.exists()) {
             file.createNewFile()
         }
@@ -78,7 +82,19 @@ object ROBOT {
         file.writeText(
             "User name: $name\n" +
                     "Questions answered: $n_question\n" +
-                    "Robot mode: $mode\n"
+                    "Robot mode: $mode\n" +
+                    "$n_hint_1 in question 1\n" +
+                    "$n_hint_2 in question 2\n" +
+                    "$n_hint_3 in question 3\n" +
+                    "$n_hint_4 in question 4\n" +
+                    "$n_hint_5 in question 5\n" +
+                    "$n_hint_6 in question 6\n" +
+                    "$n_hint_7 in question 7\n" +
+                    "$n_hint_8 in question 8\n" +
+                    "$n_hint_9 in question 9\n" +
+                    "$n_hint_10 in question 10\n" +
+                    "Correct answers: $n_correct\n" +
+                    "Incorrect answers: $n_incorrect"
         )
     }
 
