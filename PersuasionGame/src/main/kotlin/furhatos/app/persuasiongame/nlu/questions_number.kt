@@ -4,21 +4,46 @@ import furhatos.nlu.EnumEntity
 import furhatos.nlu.Intent
 import furhatos.util.Language
 
+/*
+Express number
+ */
+class ExpressNumber : EnumEntity(stemming = false, speechRecPhrases = true) {
+    override fun getEnum(lang: Language): List<String> {
+        return listOf(
+            "Number",
+            "number",
+            "Question number",
+            "question number",
+            "I am at number",
+            "I'm at number",
+            "I am in number",
+            "I'm in number",
+            "Numero",
+            "numero",
+            "I am at",
+            "I'm at",
+            "I am in",
+            "I'm in"
+        )
+    }
+}
+
 class One : EnumEntity(stemming = false, speechRecPhrases = true) {
     override fun getEnum(lang: Language): List<String> {
         return listOf(
             "one",
             "first",
             "question one",
-            "first question"
+            "first question",
+            "1"
         )
     }
 }
 
-class QuestionOne(val number : One? = null): Intent() {
+class QuestionOne(val number : One? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -29,15 +54,16 @@ class Two : EnumEntity(stemming = false, speechRecPhrases = true) {
             "two",
             "second",
             "question two",
-            "second question"
+            "second question",
+            "2"
         )
     }
 }
 
-class QuestionTwo(val number : Two? = null): Intent() {
+class QuestionTwo(val number : Two? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -48,15 +74,16 @@ class Three : EnumEntity(stemming = false, speechRecPhrases = true) {
             "three",
             "third",
             "question three",
-            "third question"
+            "third question",
+            "3"
         )
     }
 }
 
-class QuestionThree(val number : Three? = null): Intent() {
+class QuestionThree(val number : Three? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -67,15 +94,16 @@ class Four : EnumEntity(stemming = false, speechRecPhrases = true) {
             "four",
             "forth",
             "question four",
-            "forth question"
+            "forth question",
+            "4"
         )
     }
 }
 
-class QuestionFour(val number : Four? = null): Intent() {
+class QuestionFour(val number : Four? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -86,15 +114,16 @@ class Five : EnumEntity(stemming = false, speechRecPhrases = true) {
             "five",
             "fifth",
             "question five",
-            "fifth question"
+            "fifth question",
+            "5"
         )
     }
 }
 
-class QuestionFive(val number : Five? = null): Intent() {
+class QuestionFive(val number : Five? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -105,15 +134,16 @@ class Six : EnumEntity(stemming = false, speechRecPhrases = true) {
             "six",
             "sixth",
             "question six",
-            "sixth question"
+            "sixth question",
+            "6"
         )
     }
 }
 
-class QuestionSix(val number : Six? = null): Intent() {
+class QuestionSix(val number : Six? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -124,15 +154,16 @@ class Seven : EnumEntity(stemming = false, speechRecPhrases = true) {
             "seven",
             "seventh",
             "question seven",
-            "seventh question"
+            "seventh question",
+            "7"
         )
     }
 }
 
-class QuestionSeven(val number : Seven? = null): Intent() {
+class QuestionSeven(val number : Seven? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -143,15 +174,16 @@ class Eight : EnumEntity(stemming = false, speechRecPhrases = true) {
             "eight",
             "eighth",
             "question eight",
-            "eighth question"
+            "eighth question",
+            "8"
         )
     }
 }
 
-class QuestionEight(val number : Eight? = null): Intent() {
+class QuestionEight(val number : Eight? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -162,15 +194,16 @@ class Nine : EnumEntity(stemming = false, speechRecPhrases = true) {
             "nine",
             "ninth",
             "question nine",
-            "ninth question"
+            "ninth question",
+            "9"
         )
     }
 }
 
-class QuestionNine(val number : Nine? = null): Intent() {
+class QuestionNine(val number : Nine? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }
@@ -181,15 +214,16 @@ class Ten : EnumEntity(stemming = false, speechRecPhrases = true) {
             "ten",
             "tenth",
             "question ten",
-            "tenth question"
+            "tenth question",
+            "10"
         )
     }
 }
 
-class QuestionTen(val number : Ten? = null): Intent() {
+class QuestionTen(val number : Ten? = null, val expressnumber : ExpressNumber? = null): Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@number"
+            "@number", "@expressnumber @number"
         )
     }
 }

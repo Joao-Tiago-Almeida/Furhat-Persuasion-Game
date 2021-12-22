@@ -38,9 +38,6 @@ val CorrectAnswer : State = state(Interaction) {
                 "competent" -> {
                     furhat.say(competent_persuading.random())
                 }
-                else -> {    // neutral
-                    furhat.say(neutral_persuading.random())
-                }
             }
         }
 

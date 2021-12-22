@@ -55,11 +55,11 @@ val PresentGame : State = state(Interaction) {
         reentry()
     }
 
-    onResponse{
+    onResponse {
         random(
-            {furhat.say("Sorry what did you say? Are you ready to play?")},
-            {furhat.say("Sorry I didn't understand that. Are you ready to play the game?")},
-            {furhat.say("Sorry could you repeat that? Are you ready for the game?")}
+            {furhat.ask("Sorry what did you say? Are you ready to play?")},
+            {furhat.ask("Sorry I didn't understand that. Are you ready to play the game?")},
+            {furhat.ask("Sorry could you repeat that? Are you ready for the game?")}
         )
     }
 }

@@ -206,9 +206,9 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
 
     onResponse {
         random(
-            {furhat.say("Sorry, could you repeat that?")},
-            {furhat.say("Sorry, I didn't understand that. Could you repeat that?")},
-            {furhat.say("Sorry, I couldn't understand you. Could you repeat that?")}
+            {furhat.ask("Sorry, could you repeat that?")},
+            {furhat.ask("Sorry, I didn't understand that. Could you repeat that?")},
+            {furhat.ask("Sorry, I couldn't understand you. Could you repeat that?")}
         )
     }
 }
