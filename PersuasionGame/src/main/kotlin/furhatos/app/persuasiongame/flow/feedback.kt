@@ -7,11 +7,15 @@ import furhatos.flow.kotlin.*
 val correctAnswerButton = Button("Correct Answer")
 val incorrectAnswerButton = Button("Incorrect Answer")
 
+/*
+Respond to correct answer
+ */
 val CorrectAnswer : State = state(Interaction) {
     onEntry {
         furhat.ledStrip.solid(java.awt.Color(0,255,0))
         users.current.questions_answered++
         users.current.correct_answered++
+
         when (users.current.mode) {
             "friendly" -> {
                 furhat.say(friendly_correct_answer.random())
@@ -23,6 +27,7 @@ val CorrectAnswer : State = state(Interaction) {
                 furhat.say(neutral_correct_answer.random())
             }
         }
+
         // persuade the user if the intermediate rule has been said
         if(users.current.questions_answered > 5)
         {
@@ -38,16 +43,25 @@ val CorrectAnswer : State = state(Interaction) {
                 }
             }
         }
-        if(users.current.questions_answered == 10) { goto(GameOver) }
-        goto(HiFurhat)
+
+        // end of game
+        if(users.current.questions_answered == 10) {
+            goto(GameOver)
+        }
+
+        goto(SupportUnit)
     }
 }
 
+/*
+Respond to negative answer
+ */
 val IncorrectAnswer : State = state(Interaction) {
     onEntry {
         furhat.ledStrip.solid(java.awt.Color(255,0,0))
         users.current.questions_answered++
         users.current.incorrect_answered++
+
         when (users.current.mode) {
             "friendly" -> {
                 furhat.say(friendly_incorrect_answer.random())
@@ -59,7 +73,12 @@ val IncorrectAnswer : State = state(Interaction) {
                 furhat.say(neutral_incorrect_answer.random())
             }
         }
-        if(users.current.questions_answered == 10) { goto(GameOver) }
-        goto(HiFurhat)
+
+        // end of game
+        if(users.current.questions_answered == 10) {
+            goto(GameOver)
+        }
+
+        goto(SupportUnit)
     }
 }
