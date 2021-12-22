@@ -23,13 +23,13 @@ val Idle: State = state {
         // if users present
         if (users.count > 0) {
             furhat.attend(users.random)
-            //goto(SelfPresent)
+            goto(SelfPresent)
 
             // For developing - TODO remore later
-            users.current.name = "João"
-            users.current.mode = random("neutral", "friendly", "competent")
-            users.current.questions_answered = 0
-            goto(SupportUnit)
+            //users.current.name = "João"
+            //users.current.mode = random("neutral", "friendly", "competent")
+            //users.current.questions_answered = 0
+            //goto(SupportUnit)
         }
     }
 
@@ -37,13 +37,13 @@ val Idle: State = state {
 
     onUserEnter {
         furhat.attend(it)
-        //goto(SelfPresent)
+        goto(SelfPresent)
 
         // For developing - TODO remore later
-        users.current.name = "João"
-        users.current.mode = random("neutral", "friendly", "competent")
-        users.current.questions_answered = 0
-        goto(SupportUnit)
+        //users.current.name = "João"
+        //users.current.mode = random("neutral", "friendly", "competent")
+        //users.current.questions_answered = 0
+        //goto(SupportUnit)
     }
 }
 

@@ -1,5 +1,6 @@
 package furhatos.app.persuasiongame.flow
 
+import furhatos.app.persuasiongame.gestures.FriendlySmile
 import furhatos.app.persuasiongame.name
 import furhatos.app.persuasiongame.nlu.TellNameBriefly
 import furhatos.app.persuasiongame.speech.*
@@ -68,7 +69,7 @@ val CatchName: State = state(Interaction){
                     {
                         furhat.say(utterance {
                             + "${users.current.name}, what a wonderful name I just learned."
-                            + blocking {furhat.gesture(Gestures.BigSmile, async = false)}})
+                            + blocking {furhat.gesture(FriendlySmile, async = false)}})
                     },
                     {
                         furhat.say(utterance {
