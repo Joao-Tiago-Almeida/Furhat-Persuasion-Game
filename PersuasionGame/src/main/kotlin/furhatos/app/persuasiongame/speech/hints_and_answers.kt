@@ -1,9 +1,12 @@
 package furhatos.app.persuasiongame.speech
 
 import furhatos.app.persuasiongame.flow.Interaction
+import furhatos.app.persuasiongame.gestures.FriendlyStandard
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.state
+import furhatos.flow.kotlin.utterance
+import furhatos.gestures.Gestures
 
 val want_answer_or_hint = listOf(
     "I can give you some hints, or the answer directly",
@@ -199,7 +202,8 @@ fun competentAnswer(questionNumber: Number) : State = state(Interaction) {
 }
 
 // Question 1
-const val friendly_hint1_q1 = "I am pretty sure you know that but New York is a city and not a state."
+val friendly_hint1_q1 = utterance { + "I am pretty sure you know that but New York is a city and not a state."
+                                    + blocking {furhat.gesture(FriendlyStandard, async = false)}}
 const val neutral_hint1_q1 = "I would say that New York is a city and not a state."
 const val competent_hint1_q1 = "Let me take a look at my map. Okay, New York is a city and not a state."
 const val friendly_hint2_q1 = "You have to think about the famous song Welcome to the hotel blablabla."
