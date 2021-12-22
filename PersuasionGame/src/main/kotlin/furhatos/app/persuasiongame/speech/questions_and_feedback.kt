@@ -2,46 +2,40 @@ package furhatos.app.persuasiongame.speech
 
 import furhatos.util.CommonUtils
 
-val ask_question_number = listOf(
-    "In which question are you in?",
-    "What is the number of your question",
-    "Which is your question's number?"
-)
-
 val neutral_correct_answer = listOf(
     "Oh congratulations",
     "Nice job",
-    "you chose wisely"
+    "Well done"
 )
 
 val neutral_incorrect_answer = listOf(
-    "Dumb",
-    "oh shit",
-    "you chose poorly"
+    "Ok, next time ask me help if you need some",
+    "That is sad",
+    "Well, That is not good"
 )
 
 val friendly_correct_answer = listOf(
     "Oh congratulations",
-    "Nice job",
-    "you chose wisely"
+    "Nice job, I knew you could do it !",
+    "You have chosen wisely ! Well done"
 )
 
 val friendly_incorrect_answer = listOf(
-    "Dumb",
-    "oh shit",
-    "you chose poorly"
+    "Oh no ! That is so sad ! Tell me next time if you need my help! I will gladly help you",
+    "Even smart people makes mistakes, don't worry",
+    "Ok ! Well I am sure next you will make it"
 )
 
 val competent_correct_answer = listOf(
-    "Oh congratulations",
-    "Nice job",
-    "you chose wisely"
+    "My database is good then ! Congratulation, we made it !",
+    "Nice job, my programmer trained me well, I feel I know a lot of things !",
+    "Great ! Cool fact : my database was right !"
 )
 
 val competent_incorrect_answer = listOf(
-    "Dumb",
-    "oh shit",
-    "you chose poorly"
+    "That is sad, well next time ask me help, my database is pretty robust",
+    "Not good, I'm sure I could have help you more with an analysis of correlation",
+    "Oh no ! Don't hesitate to ask me for help, my database is strong !"
 )
 
 val friendly_persuading = listOf(
@@ -58,44 +52,3 @@ val competent_persuading = listOf(
     "I am competent ROBOT and I am going to persuade you",
     "I am competent ROBOT and I am going to persuade you"
 )
-
-
-object ROBOT {
-
-    /**
-     * File to save the command mode.
-     * Can be found in the user's home directory/.furhat/launcher/SDK/skills/Furhat-Persuasion-Game/PersuasionGame/src/main/kotlin/furhatos/app/persuasiongame/speech/ROBOT.tex when running on SDK.
-     */
-    private val file = CommonUtils.getAppDataDir("launcher/SDK/skills/Furhat-Persuasion-Game/PersuasionGame/src/main/kotlin/furhatos/app/persuasiongame/speech/ROBOT.tex")
-
-    /**
-     * Writes the current list of jokes to a file
-     */
-    fun writeToFile(name:String, n_question:Int, mode: String?, n_hint_1:Int, n_hint_2:Int,
-                    n_hint_3:Int, n_hint_4:Int, n_hint_5:Int, n_hint_6:Int, n_hint_7:Int,
-                    n_hint_8:Int, n_hint_9:Int, n_hint_10:Int, n_correct:Int, n_incorrect:Int)
-    {
-        if (!file.exists()) {
-            file.createNewFile()
-        }
-
-        file.writeText(
-            "User name: $name\n" +
-                    "Questions answered: $n_question\n" +
-                    "Robot mode: $mode\n" +
-                    "$n_hint_1 in question 1\n" +
-                    "$n_hint_2 in question 2\n" +
-                    "$n_hint_3 in question 3\n" +
-                    "$n_hint_4 in question 4\n" +
-                    "$n_hint_5 in question 5\n" +
-                    "$n_hint_6 in question 6\n" +
-                    "$n_hint_7 in question 7\n" +
-                    "$n_hint_8 in question 8\n" +
-                    "$n_hint_9 in question 9\n" +
-                    "$n_hint_10 in question 10\n" +
-                    "Correct answers: $n_correct\n" +
-                    "Incorrect answers: $n_incorrect"
-        )
-    }
-
-}
