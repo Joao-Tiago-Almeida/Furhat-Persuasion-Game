@@ -9,6 +9,7 @@ var User.mode : String? by UserDataDelegate()
 var User.questions_answered by NullSafeUserDataDelegate { 0 }
 var User.correct_answered by NullSafeUserDataDelegate { 0 }
 var User.incorrect_answered by NullSafeUserDataDelegate { 0 }
+var User.numberHints by NullSafeUserDataDelegate { 0 }
 
 var User.question1_hint_n by NullSafeUserDataDelegate { 0 }
 var User.question2_hint_n by NullSafeUserDataDelegate { 0 }

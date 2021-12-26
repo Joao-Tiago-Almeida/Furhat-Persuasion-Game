@@ -38,34 +38,6 @@ val ask_name = listOf(
     " What is your name?"
 )
 
-val greeting = listOf(
-    "Hello ",
-    "Welcome ",
-    "Nice to meet you ",
-    "It is a pleasure to meet you "
-)
-
-val play_game = listOf(
-    "Lets start the game.",
-    "We already lost so much time, lets start the game right away.",
-    "Ok, now all conditions are met, let the game begin.",
-    "Seat bell on, next stop: GAME!"
-)
-
-val hi_furhat1 = listOf(
-    "During the next couple of minutes, I will be here to help you. Since I don't have mobility I can't leave, but",
-    "Do not hesitate to ask me for an hint, although"
-)
-
-val hi_furhat2 = listOf(
-    "I will respond when I hear the expression: ",
-    "you have to say the magic word to activate me: "
-)
-
-val ps_note = listOf(
-    "P.S., I am only qualified to help you answering the questions, otherwise I recommend you to ask the person who is conducting the study.",
-    "P.S., Unfortunately I only know hints to the game questions, if any other questions come up, please ask the responsible person."
-)
 
 val wrong_magic_word = listOf(
     "If you are talking to me, please say:",

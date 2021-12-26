@@ -6,20 +6,24 @@ import furhatos.app.persuasiongame.mode
 import furhatos.app.persuasiongame.name
 import furhatos.app.persuasiongame.questions_answered
 import furhatos.flow.kotlin.*
+import furhatos.flow.kotlin.voice.PollyNeuralVoice
 import furhatos.util.*
 
+/*
+Idle state
+ */
 val Idle: State = state {
-
     init {
-        furhat.setVoice(Language.ENGLISH_US, Gender.MALE)
+        // Set furhat's voice, mask and face
+        furhat.voice = PollyNeuralVoice.Joey()
+        furhat.setMask("adult")
+        furhat.setCharacter("Jamie")
+        delay(600)
+
+        // if users present
         if (users.count > 0) {
             furhat.attend(users.random)
-
-            // goto(Start) TODO uncomment later
-            // TODO remove later
-            users.current.name = "João"
-            users.current.mode = random("neutral", "friendly", "competent")
-            goto(HiFurhat)
+            goto(SelfPresent)
         }
     }
 
@@ -27,15 +31,13 @@ val Idle: State = state {
 
     onUserEnter {
         furhat.attend(it)
-
-        // goto(Start) TODO uncomment later
-        // TODO remove later
-        users.current.name = "João"
-        users.current.mode = random("neutral", "friendly", "competent")
-        goto(HiFurhat)
+        goto(SelfPresent)
     }
 }
 
+/*
+General interaction
+ */
 val Interaction: State = state {
 
     onUserLeave(instant = true) {
@@ -44,7 +46,7 @@ val Interaction: State = state {
                 furhat.stopSpeaking()
                 furhat.stopListening()
                 furhat.attend(users.other)
-                goto(Start)
+                goto(SelfPresent)
             } else {
                 furhat.glance(it)
             }
@@ -57,6 +59,10 @@ val Interaction: State = state {
 
     onUserEnter(instant = true) {
         furhat.glance(it)
+    }
+
+    onButton("End Game"){
+        goto(GameOver)
     }
 
 }
