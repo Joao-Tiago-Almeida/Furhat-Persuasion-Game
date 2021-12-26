@@ -18,19 +18,12 @@ val Idle: State = state {
         furhat.voice = PollyNeuralVoice.Joey()
         furhat.setMask("adult")
         furhat.setCharacter("Jamie")
-        users.current.mode = "friendly"
         delay(600)
 
         // if users present
         if (users.count > 0) {
             furhat.attend(users.random)
             goto(SelfPresent)
-
-            // For developing - TODO remore later
-            //users.current.name = "João"
-            //users.current.mode = random("neutral", "friendly", "competent")
-            //users.current.questions_answered = 0
-            //goto(SupportUnit)
         }
     }
 
@@ -39,12 +32,6 @@ val Idle: State = state {
     onUserEnter {
         furhat.attend(it)
         goto(SelfPresent)
-
-        // For developing - TODO remore later
-        //users.current.name = "João"
-        //users.current.mode = random("neutral", "friendly", "competent")
-        //users.current.questions_answered = 0
-        //goto(SupportUnit)
     }
 }
 
