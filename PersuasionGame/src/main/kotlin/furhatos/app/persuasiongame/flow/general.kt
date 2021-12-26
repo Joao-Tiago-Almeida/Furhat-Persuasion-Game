@@ -18,6 +18,7 @@ val Idle: State = state {
         furhat.voice = PollyNeuralVoice.Joey()
         furhat.setMask("adult")
         furhat.setCharacter("Jamie")
+        users.current.mode = "friendly"
         delay(600)
 
         // if users present
