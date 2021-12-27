@@ -274,7 +274,8 @@ val GameOver : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("End of the Game, Thanks for playing")
 
-        File("Results.txt").writeText("User name: ${users.current.name}\n" +
+        File("Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
+            "User name: ${users.current.name}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +
                 "Robot mode: ${users.current.mode}\n" +
                 "${users.current.question1_hint_n} in question 1\n" +

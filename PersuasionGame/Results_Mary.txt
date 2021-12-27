@@ -1,0 +1,15 @@
+User name: Mary
+Questions answered: 9
+Robot mode: friendly
+0 in question 1
+0 in question 2
+0 in question 3
+0 in question 4
+0 in question 5
+0 in question 6
+0 in question 7
+0 in question 8
+0 in question 9
+0 in question 10
+Correct answers: 8
+Incorrect answers: 1
