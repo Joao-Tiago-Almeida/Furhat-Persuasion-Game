@@ -69,9 +69,9 @@ const val neutral_hint2_q1 = "The state you are looking for is not in the south.
 const val neutral_answer_q1 = "The response is California."
 
 // Question 2
-const val neutral_hint1_q2 = "The answer is not Squid."
+const val neutral_hint1_q2 = "The answer is not Whale."
 const val neutral_hint2_q2 = "The right answer has more than 4 letters."
-const val neutral_answer_q2 = "The answer is Whale."
+const val neutral_answer_q2 = "The answer is Squid."
 
 // Question 3
 const val neutral_hint1_q3 = "With it, you can look at the stars."

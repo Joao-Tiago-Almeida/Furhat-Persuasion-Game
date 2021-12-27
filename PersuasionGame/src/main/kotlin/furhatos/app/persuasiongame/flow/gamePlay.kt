@@ -38,7 +38,21 @@ val SupportUnit : State = state(Interaction) {
     }
 
     onNoResponse {
+        furhat.ledStrip.solid(java.awt.Color(
+            (0..255).random(),
+            (0..255).random(),
+            (0..255).random()
+        ))
         reentry()
+    }
+
+    // ____________Feedback is triggered manually--___________
+    onButton(correctAnswerButton){
+        goto(CorrectAnswer)
+    }
+
+    onButton(incorrectAnswerButton){
+        goto(IncorrectAnswer)
     }
 
     onResponse {
@@ -196,11 +210,6 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
     }
 
     onNoResponse{
-        furhat.ledStrip.solid(java.awt.Color(
-            (0..255).random(),
-            (0..255).random(),
-            (0..255).random()
-        ))
         reentry()
     }
 
@@ -276,18 +285,8 @@ val GameOver : State = state(Interaction) {
 
         File("Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
             "User name: ${users.current.name}\n" +
-                "Questions answered: ${users.current.questions_answered}\n" +
                 "Robot mode: ${users.current.mode}\n" +
-                "${users.current.question1_hint_n} in question 1\n" +
-                "${users.current.question2_hint_n} in question 2\n" +
-                "${users.current.question3_hint_n} in question 3\n" +
-                "${users.current.question4_hint_n} in question 4\n" +
-                "${users.current.question5_hint_n} in question 5\n" +
-                "${users.current.question6_hint_n} in question 6\n" +
-                "${users.current.question7_hint_n} in question 7\n" +
-                "${users.current.question8_hint_n} in question 8\n" +
-                "${users.current.question9_hint_n} in question 9\n" +
-                "${users.current.question10_hint_n} in question 10\n" +
+                "Questions answered: ${users.current.questions_answered}\n" +
                 "Correct answers: ${users.current.correct_answered}\n" +
                 "Incorrect answers: ${users.current.incorrect_answered}"
         )

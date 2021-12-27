@@ -72,9 +72,9 @@ const val friendly_hint2_q1 = "You have to think about the famous song Welcome t
 const val friendly_answer_q1 = "I'm pretty sure you could have done it ! The response is California."
 
 // Question 2
-const val friendly_hint1_q2 = "Okay, let me give you a tip, the answer is not Squid."
+const val friendly_hint1_q2 = "Okay, let me give you a tip, the answer is not Whale."
 const val friendly_hint2_q2 = "Look how smart you are ! I'm sure you know the right answer has more than 4 letters."
-const val friendly_answer_q2 = "I'm sure you already know it but anyway, The response is Whale."
+const val friendly_answer_q2 = "I'm sure you already know it but anyway, The response is Squid."
 
 // Question 3
 const val friendly_hint1_q3 = "I could have not find that either, here is a little hint : With it, you can look at the stars"

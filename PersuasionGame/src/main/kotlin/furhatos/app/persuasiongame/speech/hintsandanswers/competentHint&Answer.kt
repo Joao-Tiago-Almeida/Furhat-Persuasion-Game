@@ -69,9 +69,9 @@ const val competent_hint2_q1 = "I have just look twice at the map and the state 
 const val competent_answer_q1 = "From my database map, I can say that the response is California."
 
 // Question 2
-const val competent_hint1_q2 = "From what I know, the answer is not Squid."
+const val competent_hint1_q2 = "From what I know, the answer is not Whale."
 const val competent_hint2_q2 = "My algorithm on word counting says that the right answer has more than 4 letters."
-const val competent_answer_q2 = "I have done an analysis about sea animals and I can conclude that the answer is \"Whale\"."
+const val competent_answer_q2 = "I have done an analysis about sea animals and I can conclude that the answer is \"Squid\"."
 
 // Question 3
 const val competent_hint1_q3 = "I remember now that with the object, you can look at the stars."
