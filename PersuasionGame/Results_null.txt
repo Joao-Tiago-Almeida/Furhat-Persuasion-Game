@@ -1,0 +1,5 @@
+Username: null
+Robot mode: null
+Questions answered: 0
+Correct answers: 0
+Incorrect answers: 0

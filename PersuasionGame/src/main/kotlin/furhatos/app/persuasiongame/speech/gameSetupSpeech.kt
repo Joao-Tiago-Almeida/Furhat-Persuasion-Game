@@ -16,9 +16,8 @@ val game_setup1 = listOf(
     "In this game, your goal is to gain points by answering quiz questions correctly."
 )
 
-
 val hi_furhat1 = listOf(
-    utterance {+ "During the next couple of minutes, I will be here to help you. Since I don't have mobility I can't leave anyway."
+    utterance {+ "During the next 10 minutes, I will be here to help you. Since I don't have mobility I can't leave anyway."
                + blocking {furhat.gesture(Gestures.Wink, async = false)}},
     utterance {+ "Do not hesitate to ask me for help, if you struggle at one of the questions."}
 )

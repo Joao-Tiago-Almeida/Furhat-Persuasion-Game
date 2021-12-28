@@ -1,0 +1,5 @@
+Username: James
+Robot mode: competent
+Questions answered: 10
+Correct answers: 3
+Incorrect answers: 7

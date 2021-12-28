@@ -1,0 +1,5 @@
+Username: John
+Robot mode: competent
+Questions answered: 0
+Correct answers: 0
+Incorrect answers: 0
