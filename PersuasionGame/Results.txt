@@ -1,6 +1,6 @@
-User name: null
+User name: Emily
 Questions answered: 0
-Robot mode: null
+Robot mode: friendly
 0 in question 1
 0 in question 2
 0 in question 3

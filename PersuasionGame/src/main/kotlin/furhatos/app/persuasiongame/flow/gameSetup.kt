@@ -1,5 +1,6 @@
 package furhatos.app.persuasiongame.flow
 
+import furhatos.app.persuasiongame.gestures.FriendlyStandard
 import furhatos.app.persuasiongame.mode
 import furhatos.app.persuasiongame.name
 import furhatos.app.persuasiongame.nlu.ExpressReady
@@ -70,7 +71,17 @@ Initiate start of the game
 val StartGame : State = state{
     onEntry {
         //users.current.mode = random("neutral", "friendly", "competent")
+        //if (users.current.mode == "friendly")
+        //    furhat.gesture(FriendlyStandard)
+        //else if (users.current.mode == "competent")
+        //    furhat.gesture(CompetentStandard)
+        //else
+        //    furhat.gesture(NeutralStandard)
+
+        // General purpose code above is substituted by the following 2 lines
         users.current.mode = "friendly"
+        furhat.gesture(FriendlyStandard)
+
         users.current.questions_answered = 0
         furhat.say(
             utterance {

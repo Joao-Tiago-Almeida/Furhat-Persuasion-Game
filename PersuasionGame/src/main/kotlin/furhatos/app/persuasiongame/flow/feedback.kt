@@ -1,6 +1,8 @@
 package furhatos.app.persuasiongame.flow
 
 import furhatos.app.persuasiongame.*
+import furhatos.app.persuasiongame.gestures.DontWorry
+import furhatos.app.persuasiongame.gestures.FriendlySmile
 import furhatos.app.persuasiongame.speech.*
 import furhatos.flow.kotlin.*
 
@@ -18,7 +20,7 @@ val CorrectAnswer : State = state(Interaction) {
 
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say(friendly_correct_answer.random())
+                furhat.say(friendly_correct_answer.random() + furhat.gesture(FriendlySmile))
             }
             "competent" -> {
                 furhat.say(competent_correct_answer.random())
@@ -61,7 +63,7 @@ val IncorrectAnswer : State = state(Interaction) {
 
         when (users.current.mode) {
             "friendly" -> {
-                furhat.say(friendly_incorrect_answer.random())
+                furhat.say(friendly_incorrect_answer.random() + furhat.gesture(DontWorry))
             }
             "competent" -> {
                 furhat.say(competent_incorrect_answer.random())
