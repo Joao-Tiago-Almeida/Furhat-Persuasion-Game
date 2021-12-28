@@ -73,7 +73,7 @@ val PreHelpState : State = state(Interaction) {
             {furhat.say("I am happy to help you ${users.current.name}.")}
         )
         furhat.gesture(Gestures.Smile)
-        furhat.ask(ask_question_number.random())
+        furhat.ask(ask_question_number.random(), 5000)
     }
 
     onReentry {
