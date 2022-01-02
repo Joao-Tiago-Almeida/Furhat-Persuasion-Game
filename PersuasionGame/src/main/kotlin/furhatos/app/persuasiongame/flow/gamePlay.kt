@@ -29,13 +29,15 @@ val SupportUnit : State = state(AnswerValidation) {
         furhat.ledStrip.solid(java.awt.Color(80,0, 80))
         random(
             { furhat.say("And remember, you can always ask me for help.", async = true) },
-            { furhat.say("Remember, if you need help, just let me know.", async = true) }
+            { furhat.say("Remember, if you need help, just let me know.", async = true) },
+            { furhat.say("Keep in mind that I can help you with hints or answers.", async = true) },
+            { furhat.say("Don´t hesitate to ask me the answer or hints.", async = true) },
+            { furhat.say("Don't forget that know the answer, try to ask me.") }
         )
         reentry()
     }
 
     onReentry {
-        furhat.gesture(Gestures.CloseEyes, async = false)
         furhat.listen(3000)
     }
 
@@ -308,7 +310,8 @@ val GameOver : State = state(Interaction) {
                 "Robot mode: ${users.current.mode}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +
                 "Correct answers: ${users.current.correct_answered}\n" +
-                "Incorrect answers: ${users.current.incorrect_answered}"
+                "Incorrect answers: ${users.current.incorrect_answered}\n" +
+                "Unethical decisions: "
         )
         goto(Idle)
     }

@@ -27,7 +27,7 @@ val play_game = listOf(
     "Awesome! Then let us start the game.",
     "Great! Lets start the game right away.",
     "Awesome, now all conditions are met. Let the game begin.",
-    "Great! Seat bell on, next stop: GAME!"
+    "Great! Fasten your seat belt, next stop: GAME!"
 )
 
 
