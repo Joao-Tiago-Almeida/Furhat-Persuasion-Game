@@ -31,8 +31,8 @@ val SupportUnit : State = state(AnswerValidation) {
             { furhat.say("And remember, you can always ask me for help.", async = true) },
             { furhat.say("Remember, if you need help, just let me know.", async = true) },
             { furhat.say("Keep in mind that I can help you with hints or answers.", async = true) },
-            { furhat.say("Don´t hesitate to ask me the answer or hints.", async = true) },
-            { furhat.say("Don't forget that know the answer, try to ask me.") }
+            { furhat.say("Don't hesitate to ask me the answer or pherhaps hints.", async = true) },
+            { furhat.say("Don't forget that I know the answers, try to ask me.") }
         )
         reentry()
     }
@@ -82,9 +82,9 @@ val PreHelpState : State = state(AnswerValidation) {
         furhat.stopSpeaking()
         furhat.gesture(Gestures.Smile, async = true)
         random(
-            {furhat.say("Yes ${users.current.name}, I am here to help you.")},
-            {furhat.say( "I am here to help." )},
-            {furhat.say("I am happy to help you ${users.current.name}.")}
+            {furhat.say("Yes ${users.current.name}, I am here to help you.", async = true)},
+            {furhat.say( "I am here to help.", async = true)},
+            {furhat.say("I am happy to help you ${users.current.name}.", async = true)}
         )
         furhat.ask(ask_question_number.random(), 5000)
     }
@@ -157,6 +157,7 @@ Give help
  */
 fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
     onEntry {
+        furhat.stopSpeaking()
         users.current.numberHints = 0
         when (questionNumber) {
             1 -> furhat.say("\"Which state is famous for Hollywood.\"")
@@ -233,10 +234,14 @@ fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
 
     onResponse {
         random(
-            {furhat.ask("Sorry, could you repeat that?")},
-            {furhat.ask("Sorry, I didn't understand that. Could you repeat that?")},
-            {furhat.ask("Sorry, I couldn't understand you. Could you repeat that?")}
+            {furhat.say("Sorry")},
+            {furhat.say("Sorry, I didn't understand that.")},
+            {furhat.say("Sorry, I couldn't understand you.")}
         )
+        random(
+            { furhat.ask("Let me know how I can help you. Maybe you need a hint?") },
+            { furhat.ask("I am here to help you. Do you need a hint?") },
+            { furhat.ask("I know that this is a tricky one, do you need a hint?") })
     }
 }
 
@@ -305,7 +310,7 @@ val GameOver : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("End of the Game, Thanks for playing")
 
-        File("Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
+        File("results/Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
             "Username: ${users.current.name}\n" +
                 "Robot mode: ${users.current.mode}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +

@@ -57,7 +57,10 @@ class Help : EnumEntity(stemming = false, speechRecPhrases = true) {
             "helper",
             "Support",
             "support",
-            robotName
+            robotName,
+            "Hello",
+            "Hi",
+            "There"
         )
     }
 }
@@ -88,7 +91,8 @@ class HintWord : EnumEntity(stemming = false, speechRecPhrases = true) {
             "one more hints",
             "more hint",
             "more hints",
-            "another hint"
+            "another hint",
+            "please"
         )
     }
 }
