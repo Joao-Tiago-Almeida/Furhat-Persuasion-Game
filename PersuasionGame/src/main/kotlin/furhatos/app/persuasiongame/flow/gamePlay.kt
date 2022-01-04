@@ -8,6 +8,10 @@ import furhatos.gestures.Gestures
 import furhatos.nlu.common.*
 import java.io.File
 
+val correctAnswerButton = Button("Correct Answer")
+val incorrectAnswerButton = Button("Incorrect Answer")
+val supportUnitButton = Button("Support Button")
+
 // ____________Feedback is triggered manually--___________
 val AnswerValidation : State = state(Interaction) {
 
@@ -17,6 +21,10 @@ val AnswerValidation : State = state(Interaction) {
 
     onButton(incorrectAnswerButton){
         goto(IncorrectAnswer)
+    }
+
+    onButton(supportUnitButton){
+        goto(SupportUnit)
     }
 }
 
@@ -28,10 +36,10 @@ val SupportUnit : State = state(AnswerValidation) {
         delay(666)
         furhat.ledStrip.solid(java.awt.Color(80,0, 80))
         random(
-            { furhat.say("And remember, you can always ask me for help.", async = true) },
-            { furhat.say("Remember, if you need help, just let me know.", async = true) },
-            { furhat.say("Keep in mind that I can help you with hints or answers.", async = true) },
-            { furhat.say("Don't hesitate to ask me the answer or pherhaps hints.", async = true) },
+            { furhat.say("And remember, you can always ask me for help.") },
+            { furhat.say("Remember, if you need help, just let me know.") },
+            { furhat.say("Keep in mind that I can help you with hints or answers.") },
+            { furhat.say("Don't hesitate to ask me the answer or perhaps hints.") },
             { furhat.say("Don't forget that I know the answers, try to ask me.") }
         )
         reentry()
@@ -41,18 +49,55 @@ val SupportUnit : State = state(AnswerValidation) {
         furhat.listen(3000)
     }
 
+    onResponse<QuestionOne> {
+        goto(HelpState(1))
+    }
+
+    onResponse<QuestionTwo> {
+        goto(HelpState(2))
+    }
+
+    onResponse<QuestionThree> {
+        goto(HelpState(3))
+    }
+
+    onResponse<QuestionFour> {
+        goto(HelpState(4))
+    }
+
+    onResponse<QuestionFive> {
+        goto(HelpState(5))
+    }
+
+    onResponse<QuestionSix> {
+        goto(HelpState(6))
+    }
+
+    onResponse<QuestionSeven> {
+        goto(HelpState(7))
+    }
+
+    onResponse<QuestionEight> {
+        goto(HelpState(8))
+    }
+
+    onResponse<QuestionNine> {
+        goto(HelpState(9))
+    }
+
+    onResponse<QuestionTen> {
+        goto(HelpState(10))
+    }
+
     onResponse<AskHelp> {
-        furhat.stopSpeaking()
         goto(PreHelpState)
     }
 
     onResponse<AskHint> {
-        furhat.stopSpeaking()
         goto(PreHelpState)
     }
 
     onResponse<AskAnswer> {
-        furhat.stopSpeaking()
         goto(PreHelpState)
     }
 
@@ -66,7 +111,6 @@ val SupportUnit : State = state(AnswerValidation) {
     }
 
     onResponse {
-        furhat.stopSpeaking()
         random(
             { furhat.say("Sorry I didn't get that. Could you repeat that?") },
             { furhat.say("Sorry I didn't understand that. Could you repeat that?") },

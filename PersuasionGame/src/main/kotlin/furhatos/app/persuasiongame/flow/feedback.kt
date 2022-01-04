@@ -6,9 +6,6 @@ import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
 import java.awt.Color
 
-val correctAnswerButton = Button("Correct Answer")
-val incorrectAnswerButton = Button("Incorrect Answer")
-
 /*
 Respond to correct answer
  */

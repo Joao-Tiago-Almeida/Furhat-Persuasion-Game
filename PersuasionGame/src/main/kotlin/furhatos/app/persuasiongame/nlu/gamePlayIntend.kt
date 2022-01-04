@@ -92,7 +92,9 @@ class HintWord : EnumEntity(stemming = false, speechRecPhrases = true) {
             "more hint",
             "more hints",
             "another hint",
-            "please"
+            "please",
+            "I do want a hint"
+
         )
     }
 }
