@@ -2,8 +2,9 @@
 
 package furhatos.app.persuasiongame.flow
 
-import furhatos.app.persuasiongame.*
-import furhatos.autobehavior.setDefaultMicroexpression
+import furhatos.app.persuasiongame.mode
+import furhatos.app.persuasiongame.name
+import furhatos.app.persuasiongame.questions_answered
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.PollyNeuralVoice
 import furhatos.util.*
@@ -16,16 +17,13 @@ val Idle: State = state {
         // Set furhat's voice, mask and face
         furhat.voice = PollyNeuralVoice.Joey()
         furhat.setMask("adult")
-        furhat.setCharacter("James")
-        furhat.setMask("Geremy")
-        furhat.setDefaultMicroexpression(blinking = true, facialMovements= true, eyeMovements = true)
+        furhat.setCharacter("Jamie")
         delay(600)
 
         // if users present
         if (users.count > 0) {
             furhat.attend(users.random)
             goto(SelfPresent)
-            // goto(StartGame)
         }
     }
 
@@ -34,7 +32,6 @@ val Idle: State = state {
     onUserEnter {
         furhat.attend(it)
         goto(SelfPresent)
-        // goto(StartGame)
     }
 }
 

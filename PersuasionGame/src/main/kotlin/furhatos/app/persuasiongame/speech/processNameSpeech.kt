@@ -1,5 +1,7 @@
 package furhatos.app.persuasiongame.speech
 
+import furhatos.flow.kotlin.furhat
+
 val robotName : String = "James"
 
 val self_present = listOf(

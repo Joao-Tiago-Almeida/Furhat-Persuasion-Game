@@ -1,6 +1,0 @@
-Username: Duarte Honrado
-Robot mode: neutral
-Questions answered: 10
-Correct answers: 8
-Incorrect answers: 2
-Unethical decisions: 0

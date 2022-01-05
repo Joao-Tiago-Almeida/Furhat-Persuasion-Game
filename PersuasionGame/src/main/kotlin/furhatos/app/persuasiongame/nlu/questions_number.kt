@@ -55,9 +55,7 @@ class Two : EnumEntity(stemming = false, speechRecPhrases = true) {
             "second",
             "question two",
             "second question",
-            "2",
-            "to",
-            "who"
+            "2"
         )
     }
 }
@@ -77,9 +75,7 @@ class Three : EnumEntity(stemming = false, speechRecPhrases = true) {
             "third",
             "question three",
             "third question",
-            "3",
-            "tree",
-            "free"
+            "3"
         )
     }
 }
@@ -99,8 +95,7 @@ class Four : EnumEntity(stemming = false, speechRecPhrases = true) {
             "forth",
             "question four",
             "forth question",
-            "4",
-            "for"
+            "4"
         )
     }
 }
@@ -120,10 +115,7 @@ class Five : EnumEntity(stemming = false, speechRecPhrases = true) {
             "fifth",
             "question five",
             "fifth question",
-            "5",
-            "fight",
-            "time",
-            "price"
+            "5"
         )
     }
 }
@@ -143,8 +135,7 @@ class Six : EnumEntity(stemming = false, speechRecPhrases = true) {
             "sixth",
             "question six",
             "sixth question",
-            "6",
-            "sex"
+            "6"
         )
     }
 }
@@ -184,9 +175,7 @@ class Eight : EnumEntity(stemming = false, speechRecPhrases = true) {
             "eighth",
             "question eight",
             "eighth question",
-            "8",
-            "a",
-            "at"
+            "8"
         )
     }
 }
@@ -226,8 +215,7 @@ class Ten : EnumEntity(stemming = false, speechRecPhrases = true) {
             "tenth",
             "question ten",
             "tenth question",
-            "10",
-            "ben"
+            "10"
         )
     }
 }
