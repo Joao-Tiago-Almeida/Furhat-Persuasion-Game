@@ -1,0 +1,6 @@
+Username: Carolina Barbeira
+Robot mode: friendly
+Questions answered: 10
+Correct answers: 8
+Incorrect answers: 2
+Unethical decisions: 1

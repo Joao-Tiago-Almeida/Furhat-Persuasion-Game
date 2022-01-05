@@ -17,3 +17,7 @@ gradle-app.setting
 *.iws
 *.iml
 *.ipr
+
+.vscode
+.DS_Store
+.idea

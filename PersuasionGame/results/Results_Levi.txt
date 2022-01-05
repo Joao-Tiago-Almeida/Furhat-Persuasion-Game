@@ -1,0 +1,6 @@
+Username: Diogo Ribeiro
+Robot mode: competent
+Questions answered: 10
+Correct answers: 8
+Incorrect answers: 2
+Unethical decisions: 2
