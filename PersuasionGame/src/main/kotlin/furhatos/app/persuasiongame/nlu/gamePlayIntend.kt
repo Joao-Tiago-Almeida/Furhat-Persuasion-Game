@@ -1,7 +1,6 @@
 package furhatos.app.persuasiongame.nlu
 
 import furhatos.app.persuasiongame.speech.robotName
-import furhatos.flow.kotlin.furhat
 import furhatos.nlu.EnumEntity
 import furhatos.nlu.Intent
 import furhatos.util.Language
@@ -56,11 +55,7 @@ class Help : EnumEntity(stemming = false, speechRecPhrases = true) {
             "Helper",
             "helper",
             "Support",
-            "support",
-            robotName,
-            "Hello",
-            "Hi",
-            "There"
+            "support"
         )
     }
 }
@@ -91,10 +86,7 @@ class HintWord : EnumEntity(stemming = false, speechRecPhrases = true) {
             "one more hints",
             "more hint",
             "more hints",
-            "another hint",
-            "please",
-            "I do want a hint"
-
+            "another hint"
         )
     }
 }
