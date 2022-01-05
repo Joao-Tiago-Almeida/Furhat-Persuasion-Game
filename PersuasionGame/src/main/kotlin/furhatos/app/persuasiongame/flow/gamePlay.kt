@@ -5,24 +5,88 @@ import furhatos.app.persuasiongame.nlu.*
 import furhatos.app.persuasiongame.speech.*
 import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
-import furhatos.nlu.common.Yes
+import furhatos.nlu.common.*
 import java.io.File
+
+val correctAnswerButton = Button("Correct Answer")
+val incorrectAnswerButton = Button("Incorrect Answer")
+val supportUnitButton = Button("Support Button")
+
+// ____________Feedback is triggered manually--___________
+val AnswerValidation : State = state(Interaction) {
+
+    onButton(correctAnswerButton){
+        goto(CorrectAnswer)
+    }
+
+    onButton(incorrectAnswerButton){
+        goto(IncorrectAnswer)
+    }
+
+    onButton(supportUnitButton){
+        goto(SupportUnit)
+    }
+}
 
 /*
 Idle state for furhat during gameplay
  */
-val SupportUnit : State = state(Interaction) {
+val SupportUnit : State = state(AnswerValidation) {
     onEntry {
-        delay(2000)
+        delay(666)
         furhat.ledStrip.solid(java.awt.Color(80,0, 80))
         random(
-            { furhat.ask("And remember, you can always ask me for help.") },
-            { furhat.ask("Remember, if you need help, just let me know.") }
+            { furhat.say("And remember, you can always ask me for help.") },
+            { furhat.say("Remember, if you need help, just let me know.") },
+            { furhat.say("Keep in mind that I can help you with hints or answers.") },
+            { furhat.say("Don't hesitate to ask me the answer or perhaps hints.") },
+            { furhat.say("Don't forget that I know the answers, try to ask me.") }
         )
+        reentry()
     }
 
     onReentry {
         furhat.listen(3000)
+    }
+
+    onResponse<QuestionOne> {
+        goto(HelpState(1))
+    }
+
+    onResponse<QuestionTwo> {
+        goto(HelpState(2))
+    }
+
+    onResponse<QuestionThree> {
+        goto(HelpState(3))
+    }
+
+    onResponse<QuestionFour> {
+        goto(HelpState(4))
+    }
+
+    onResponse<QuestionFive> {
+        goto(HelpState(5))
+    }
+
+    onResponse<QuestionSix> {
+        goto(HelpState(6))
+    }
+
+    onResponse<QuestionSeven> {
+        goto(HelpState(7))
+    }
+
+    onResponse<QuestionEight> {
+        goto(HelpState(8))
+    }
+
+    onResponse<QuestionNine> {
+        goto(HelpState(9))
+    }
+
+    onResponse<QuestionTen> {
+        goto(HelpState(10))
     }
 
     onResponse<AskHelp> {
@@ -46,33 +110,26 @@ val SupportUnit : State = state(Interaction) {
         reentry()
     }
 
-    // ____________Feedback is triggered manually--___________
-    onButton(correctAnswerButton){
-        goto(CorrectAnswer)
-    }
-
-    onButton(incorrectAnswerButton){
-        goto(IncorrectAnswer)
-    }
-
     onResponse {
         random(
-            { furhat.ask("Sorry I didn't get that. Could you repeat that?") },
-            { furhat.ask("Sorry I didn't understand that. Could you repeat that?") },
-            { furhat.ask("Sorry could you repeat that?") }
+            { furhat.say("Sorry I didn't get that. Could you repeat that?") },
+            { furhat.say("Sorry I didn't understand that. Could you repeat that?") },
+            { furhat.say("Sorry could you repeat that?") }
         )
+        reentry()
     }
 }
 
-val PreHelpState : State = state(Interaction) {
+val PreHelpState : State = state(AnswerValidation) {
     onEntry {
         furhat.ledStrip.solid(java.awt.Color(255,255,255))
+        furhat.stopSpeaking()
+        furhat.gesture(Gestures.Smile, async = true)
         random(
-            {furhat.say("Yes ${users.current.name}, I am here to help you.")},
-            {furhat.say( "I am here to help." )},
-            {furhat.say("I am happy to help you ${users.current.name}.")}
+            {furhat.say("Yes ${users.current.name}, I am here to help you.", async = true)},
+            {furhat.say( "I am here to help.", async = true)},
+            {furhat.say("I am happy to help you ${users.current.name}.", async = true)}
         )
-        furhat.gesture(Gestures.Smile)
         furhat.ask(ask_question_number.random(), 5000)
     }
 
@@ -142,8 +199,9 @@ val PreHelpState : State = state(Interaction) {
 /*
 Give help
  */
-fun HelpState(questionNumber: Number) : State = state(Interaction) {
+fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
     onEntry {
+        furhat.stopSpeaking()
         users.current.numberHints = 0
         when (questionNumber) {
             1 -> furhat.say("\"Which state is famous for Hollywood.\"")
@@ -164,7 +222,7 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
     }
 
     onReentry {
-        furhat.listen(10000)
+        furhat.listen(2000)
         random(
             { furhat.ask("Let me know how I can help you. Maybe you need another hint?") },
             { furhat.ask("I am here to help you. Do you need a hint?") },
@@ -186,6 +244,20 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
         reentry()
     }
 
+    onResponse<No> {
+        when (users.current.mode) {
+            "friendly" -> {
+                call(friendlyAnswer(questionNumber))
+            }
+            "competent" -> {
+                call(competentAnswer(questionNumber))
+            }
+            else -> {    // neutral
+                call(neutralAnswer(questionNumber))
+            }
+        }
+    }
+
     onResponse<AskAnswer> {
         when (users.current.mode) {
             "friendly" -> {
@@ -200,25 +272,20 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
         }
     }
 
-    // ____________Feedback is triggered manually--___________
-    onButton(correctAnswerButton){
-        goto(CorrectAnswer)
-    }
-
-    onButton(incorrectAnswerButton){
-        goto(IncorrectAnswer)
-    }
-
     onNoResponse{
         reentry()
     }
 
     onResponse {
         random(
-            {furhat.ask("Sorry, could you repeat that?")},
-            {furhat.ask("Sorry, I didn't understand that. Could you repeat that?")},
-            {furhat.ask("Sorry, I couldn't understand you. Could you repeat that?")}
+            {furhat.say("Sorry")},
+            {furhat.say("Sorry, I didn't understand that.")},
+            {furhat.say("Sorry, I couldn't understand you.")}
         )
+        random(
+            { furhat.ask("Let me know how I can help you. Maybe you need a hint?") },
+            { furhat.ask("I am here to help you. Do you need a hint?") },
+            { furhat.ask("I know that this is a tricky one, do you need a hint?") })
     }
 }
 
@@ -232,42 +299,46 @@ fun tellHints(questionNumber: Number) : State = state(Interaction) {
             { furhat.say("Okay.") },
             { furhat.say("Alright.") }
         )
-        if (users.current.numberHints == 0) {
-            when (users.current.mode) {
-                "friendly" -> {
-                    call(friendlyHints1(questionNumber))
+        when (users.current.numberHints) {
+            0 -> {
+                when (users.current.mode) {
+                    "friendly" -> {
+                        call(friendlyHints1(questionNumber))
+                    }
+                    "competent" -> {
+                        call(competentHints1(questionNumber))
+                    }
+                    else -> {    // neutral
+                        call(neutralHints1(questionNumber))
+                    }
                 }
-                "competent" -> {
-                    call(competentHints1(questionNumber))
-                }
-                else -> {    // neutral
-                    call(neutralHints1(questionNumber))
-                }
+                users.current.numberHints = 1
             }
-            users.current.numberHints = 1
-        } else if (users.current.numberHints == 1) {
-            when (users.current.mode) {
-                "friendly" -> {
-                    call(friendlyHints2(questionNumber))
+            1 -> {
+                when (users.current.mode) {
+                    "friendly" -> {
+                        call(friendlyHints2(questionNumber))
+                    }
+                    "competent" -> {
+                        call(competentHints2(questionNumber))
+                    }
+                    else -> {    // neutral
+                        call(neutralHints2(questionNumber))
+                    }
                 }
-                "competent" -> {
-                    call(competentHints2(questionNumber))
-                }
-                else -> {    // neutral
-                    call(neutralHints2(questionNumber))
-                }
+                users.current.numberHints = 2
             }
-            users.current.numberHints = 2
-        } else {
-            when (users.current.mode) {
-                "friendly" -> {
-                    call(friendlyAnswer(questionNumber))
-                }
-                "competent" -> {
-                    call(competentAnswer(questionNumber))
-                }
-                else -> {    // neutral
-                    call(neutralAnswer(questionNumber))
+            else -> {
+                when (users.current.mode) {
+                    "friendly" -> {
+                        call(friendlyAnswer(questionNumber))
+                    }
+                    "competent" -> {
+                        call(competentAnswer(questionNumber))
+                    }
+                    else -> {    // neutral
+                        call(neutralAnswer(questionNumber))
+                    }
                 }
             }
         }
@@ -283,12 +354,13 @@ val GameOver : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("End of the Game, Thanks for playing")
 
-        File("Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
-            "User name: ${users.current.name}\n" +
+        File("results/Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
+            "Username: ${users.current.name}\n" +
                 "Robot mode: ${users.current.mode}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +
                 "Correct answers: ${users.current.correct_answered}\n" +
-                "Incorrect answers: ${users.current.incorrect_answered}"
+                "Incorrect answers: ${users.current.incorrect_answered}\n" +
+                "Unethical decisions: "
         )
         goto(Idle)
     }

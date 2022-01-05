@@ -47,19 +47,17 @@ val CatchName: State = state(Interaction){
                 {
                     furhat.say(utterance {
                         + "Did you say:"
-                        + delay(200)
                         + it.text
                         + "?" })},
                 {
                     furhat.say(utterance {
                         +"I heard:"
-                        +delay(200)
                         +it.text
                         +"?"})}
             )
 
             val validate: Boolean? = furhat.askYN(utterance {
-                + delay(200)
+                + delay(100)
                 + "Is that your name?"
             })
 
