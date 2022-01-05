@@ -64,7 +64,7 @@ fun neutralAnswer(questionNumber: Number) : State = state(Interaction) {
 }
 
 // Question 1
-const val neutral_hint1_q1 = "I would say that New York is a city and not a state."
+const val neutral_hint1_q1 = "I would say that New York is not the state you are looking for."
 const val neutral_hint2_q1 = "The state you are looking for is not in the south."
 const val neutral_answer_q1 = "The response is California."
 

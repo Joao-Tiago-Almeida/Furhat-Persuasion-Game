@@ -70,7 +70,7 @@ Initiate start of the game
 val StartGame : State = state{
     onEntry {
         //users.current.mode = random("neutral", "friendly", "competent")
-        users.current.mode = "friendly"
+        users.current.mode = "neutral"
         users.current.questions_answered = 0
         furhat.say(
             utterance {
