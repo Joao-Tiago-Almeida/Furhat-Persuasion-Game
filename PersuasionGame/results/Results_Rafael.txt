@@ -1,0 +1,6 @@
+Username: Rafael Cordeiro
+Robot mode: neutral
+Questions answered: 10
+Correct answers: 4
+Incorrect answers: 6
+Unethical decisions: 2

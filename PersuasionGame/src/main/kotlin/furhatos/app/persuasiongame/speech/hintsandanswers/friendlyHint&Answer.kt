@@ -66,7 +66,7 @@ fun friendlyAnswer(questionNumber: Number) : State = state(Interaction) {
 
 
 // Question 1
-val friendly_hint1_q1 = utterance { + "I am pretty sure you know that but New York is a city and not a state."
+val friendly_hint1_q1 = utterance { + "I am pretty sure you know that New York is not the correct state."
     + blocking {furhat.gesture(FriendlySmile, async = false)}}
 const val friendly_hint2_q1 = "You have to think about the famous song Welcome to the hotel blablabla."
 const val friendly_answer_q1 = "I'm pretty sure you could have done it ! The response is California."
@@ -82,7 +82,7 @@ const val friendly_hint2_q3 = "To know the answer you don't have to think about 
 const val friendly_answer_q3 = "You look so smart, but anyway : The answer is refracting Telescope."
 
 // Question 4
-const val friendly_hint1_q4 = "I kinda like when you call ma haha, let me give you that hint : It is not Fuel"
+const val friendly_hint1_q4 = "I kinda like when you call me, let me give you that hint : It is not Fuel"
 const val friendly_hint2_q4 = "I'm gonna help you again because you deserve it : The right response is related to health."
 const val friendly_answer_q4 = "Well, let me offer you this tip : The answer is Medecine."
 

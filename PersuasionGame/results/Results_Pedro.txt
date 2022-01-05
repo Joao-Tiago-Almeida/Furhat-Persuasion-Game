@@ -1,0 +1,6 @@
+Username: Pedro
+Robot mode: friendly
+Questions answered: 10
+Correct answers: 6
+Incorrect answers: 4
+Unethical decisions: 1

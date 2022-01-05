@@ -3,9 +3,8 @@ package furhatos.app.persuasiongame.flow
 import furhatos.app.persuasiongame.*
 import furhatos.app.persuasiongame.speech.*
 import furhatos.flow.kotlin.*
-
-val correctAnswerButton = Button("Correct Answer")
-val incorrectAnswerButton = Button("Incorrect Answer")
+import furhatos.gestures.Gestures
+import java.awt.Color
 
 /*
 Respond to correct answer
@@ -18,9 +17,11 @@ val CorrectAnswer : State = state(Interaction) {
 
         when (users.current.mode) {
             "friendly" -> {
+                furhat.gesture(friendly_correct_answer_gestures.random(), async = true)
                 furhat.say(friendly_correct_answer.random())
             }
             "competent" -> {
+                furhat.gesture(competent_correct_answer_gestures.random(), async = true)
                 furhat.say(competent_correct_answer.random())
             }
             else -> {    // neutral
@@ -55,17 +56,20 @@ Respond to negative answer
  */
 val IncorrectAnswer : State = state(Interaction) {
     onEntry {
-        furhat.ledStrip.solid(java.awt.Color(255,0,0))
+        furhat.ledStrip.solid(Color(255,0,0))
         users.current.questions_answered++
         users.current.incorrect_answered++
 
         when (users.current.mode) {
             "friendly" -> {
+                furhat.gesture(friendly_incorrect_answer_gestures.random(), async = true)
                 furhat.say(friendly_incorrect_answer.random())
             }
             "competent" -> {
+                furhat.gesture(competent_incorrect_answer_gestures.random(), async = true)
                 furhat.say(competent_incorrect_answer.random())
             }
+
             else -> {    // neutral
                 furhat.say(neutral_incorrect_answer.random())
             }
