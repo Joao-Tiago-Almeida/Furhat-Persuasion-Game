@@ -16,8 +16,7 @@ val Idle: State = state {
         // Set furhat's voice, mask and face
         furhat.voice = PollyNeuralVoice.Joey()
         furhat.setMask("adult")
-        furhat.setCharacter("James")
-        furhat.setMask("Geremy")
+        furhat.setCharacter("August")
         furhat.setDefaultMicroexpression(blinking = true, facialMovements= true, eyeMovements = true)
         delay(600)
 
@@ -53,10 +52,6 @@ val Interaction: State = state {
             } else {
                 furhat.glance(it)
             }
-        } else {
-            furhat.stopSpeaking()
-            furhat.stopListening()
-            goto(GameOver)
         }
     }
 
