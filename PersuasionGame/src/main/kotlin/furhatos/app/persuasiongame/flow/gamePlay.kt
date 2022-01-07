@@ -38,9 +38,8 @@ val SupportUnit : State = state(AnswerValidation) {
         random(
             { furhat.say("And remember, you can always ask me for help.") },
             { furhat.say("Remember, if you need help, just let me know.") },
-            { furhat.say("Keep in mind that I can help you with hints or answers.") },
-            { furhat.say("Don't hesitate to ask me the answer or perhaps hints.") },
-            { furhat.say("Don't forget that I know the answers, try to ask me.") }
+            { furhat.say("Keep in mind that I can help you with hints.") },
+            { furhat.say("Don't hesitate to ask me for me.") }
         )
         reentry()
     }
@@ -245,17 +244,11 @@ fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
     }
 
     onResponse<No> {
-        when (users.current.mode) {
-            "friendly" -> {
-                call(friendlyAnswer(questionNumber))
-            }
-            "competent" -> {
-                call(competentAnswer(questionNumber))
-            }
-            else -> {    // neutral
-                call(neutralAnswer(questionNumber))
-            }
-        }
+        random(
+            {furhat.ask("How can I help you then?")},
+            {furhat.ask("Okay, I am sure you can do it yourself.")},
+            {furhat.ask("Alright, let me know if you need help.")}
+        )
     }
 
     onResponse<AskAnswer> {
@@ -270,6 +263,7 @@ fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
                 call(neutralAnswer(questionNumber))
             }
         }
+        reentry()
     }
 
     onNoResponse{
@@ -278,7 +272,7 @@ fun HelpState(questionNumber: Number) : State = state(AnswerValidation) {
 
     onResponse {
         random(
-            {furhat.say("Sorry")},
+            {furhat.say("Sorry.")},
             {furhat.say("Sorry, I didn't understand that.")},
             {furhat.say("Sorry, I couldn't understand you.")}
         )
