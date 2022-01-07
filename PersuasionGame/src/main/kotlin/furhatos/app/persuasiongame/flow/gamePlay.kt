@@ -7,6 +7,10 @@ import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
 import furhatos.nlu.common.*
 import java.io.File
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 val correctAnswerButton = Button("Correct Answer")
 val incorrectAnswerButton = Button("Incorrect Answer")
@@ -39,7 +43,7 @@ val SupportUnit : State = state(AnswerValidation) {
             { furhat.say("And remember, you can always ask me for help.") },
             { furhat.say("Remember, if you need help, just let me know.") },
             { furhat.say("Keep in mind that I can help you with hints.") },
-            { furhat.say("Don't hesitate to ask me for me.") }
+            { furhat.say("Don't hesitate to ask me for help.") }
         )
         reentry()
     }
@@ -348,12 +352,18 @@ val GameOver : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("End of the Game, Thanks for playing")
 
-        File("results/Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
+        val result_folder = File("results/${DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())}")
+        // have the object build the directory structure, if needed.
+        result_folder.mkdirs()
+
+        File("results/${DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())}/Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
             "Username: ${users.current.name}\n" +
+                "Time: ${DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SS").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())} \n" +
                 "Robot mode: ${users.current.mode}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +
                 "Correct answers: ${users.current.correct_answered}\n" +
-                "Incorrect answers: ${users.current.incorrect_answered}\n" +
+                "Incorrect answers: ${users.current.incorrect_answered}\n \n" +
+                "Ethical decisions: \n" +
                 "Unethical decisions: "
         )
         goto(Idle)
