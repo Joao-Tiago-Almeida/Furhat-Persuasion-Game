@@ -65,22 +65,25 @@ val Interaction: State = state {
 
     onButton("Yes") {
         random(
-            { furhat.ask("Yes!") },
-            { furhat.ask("Yes, ${users.current.name}.") }
+            { furhat.say("Yes!") },
+            { furhat.say("Yes, ${users.current.name}.") }
         )
+        furhat.listen(5000)
     }
 
     onButton("No") {
         random(
-            { furhat.ask("No!") },
-            { furhat.ask("No, ${users.current.name}.") }
+            { furhat.say("No!") },
+            { furhat.say("No, ${users.current.name}.") }
         )
+        furhat.listen(5000)
     }
 
     onButton("Say Question Number") {
         random(
-            { furhat.ask("Sorry, please tell me the question's number when asking for help.") },
-            { furhat.ask("Sorry, ${users.current.name}. Could you tell me the question number first?") }
+            { furhat.say("Sorry, please tell me the question's number when asking for help.") },
+            { furhat.say("Sorry, ${users.current.name}. Could you tell me the question number first?") }
         )
+        furhat.listen(5000)
     }
 }
