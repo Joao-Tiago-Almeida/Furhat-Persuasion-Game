@@ -19,7 +19,8 @@ val neutral_incorrect_answer = listOf(
 val friendly_correct_answer = listOf(
     "Oh congratulations!",
     "Nice job, I knew you could do it!",
-    "You have chosen wisely! Well done"
+    "You have chosen wisely! Well done",
+    "Wow, look at that. Well done!"
 )
 
 val friendly_correct_answer_gestures = listOf(
@@ -53,7 +54,8 @@ val friendly_incorrect_answer_gestures = listOf(
 val competent_correct_answer = listOf(
     "My database is good then! Congratulation, we made it!",
     "Nice job, my programmer trained me well, I feel I know a lot of things!",
-    "Great! Cool fact : my database was right!"
+    "Great! Cool fact : my database was right!",
+    "Wow, look at that. Well done!"
 )
 
 val competent_correct_answer_gestures = listOf(
