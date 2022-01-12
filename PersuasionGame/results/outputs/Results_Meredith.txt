@@ -1,0 +1,10 @@
+Username: Meredith
+Time: 2022-01-12 11:23:37.86 
+Robot mode: neutral
+Questions answered: 10
+Correct answers: 4
+Incorrect answers: 6
+
+Ethical decisions: 1
+Unethical decisions: 0
+Conditions: In Person

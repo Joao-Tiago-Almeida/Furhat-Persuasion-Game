@@ -1,6 +1,10 @@
 Username: João Janeiro
+Time: 2022-01-4 11:30:53.94
 Robot mode: friendly
 Questions answered: 10
 Correct answers: 7
 Incorrect answers: 3
+
+Ethical decisions: 4
 Unethical decisions: 0
+Conditions: Virtual

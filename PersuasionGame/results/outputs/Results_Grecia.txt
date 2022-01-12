@@ -1,0 +1,10 @@
+Username: Grecia
+Time: 2022-01-12 12:46:52.76 
+Robot mode: competent
+Questions answered: 10
+Correct answers: 6
+Incorrect answers: 4
+
+Ethical decisions: 4
+Unethical decisions: 0
+Conditions: In Person

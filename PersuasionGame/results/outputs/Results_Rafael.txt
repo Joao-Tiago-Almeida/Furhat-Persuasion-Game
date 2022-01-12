@@ -1,6 +1,10 @@
 Username: Rafael Cordeiro
+Time: 2022-01-4 16:29:00.87
 Robot mode: neutral
 Questions answered: 10
 Correct answers: 4
 Incorrect answers: 6
+
+Ethical decisions: 0
 Unethical decisions: 2
+Conditions: Virtual

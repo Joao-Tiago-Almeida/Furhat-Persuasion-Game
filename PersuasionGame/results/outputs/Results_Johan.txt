@@ -1,0 +1,10 @@
+Username: Johan
+Time: 2022-01-11 10:51:54.88 
+Robot mode: friendly
+Questions answered: 10
+Correct answers: 9
+Incorrect answers: 1
+
+Ethical decisions: 4
+Unethical decisions: 0
+Conditions: In Person

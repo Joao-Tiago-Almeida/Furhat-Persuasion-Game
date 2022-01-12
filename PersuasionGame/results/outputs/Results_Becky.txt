@@ -1,0 +1,10 @@
+Username: Baptiste
+Time: 2022-01-10 14:53:24.72 
+Robot mode: competent
+Questions answered: 10
+Correct answers: 8
+Incorrect answers: 2
+ 
+Ethical decisions: 4
+Unethical decisions: 0
+Conditions: In Person

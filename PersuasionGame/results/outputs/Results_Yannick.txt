@@ -1,0 +1,10 @@
+Username: Yannick
+Time: 2022-01-10 13:48:36.69 
+Robot mode: competent
+Questions answered: 10
+Correct answers: 7
+Incorrect answers: 3
+
+Ethical decisions: 3
+Unethical decisions: 0
+Conditions: In Person

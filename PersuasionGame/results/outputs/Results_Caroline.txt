@@ -1,6 +1,10 @@
 Username: Carolina Fidalgo
+Time: 2022-01-2 19:23:59.41
 Robot mode: competent
 Questions answered: 10
 Correct answers: 8
 Incorrect answers: 2
+
+Ethical decisions: 2
 Unethical decisions: 3
+Conditions: Virtual

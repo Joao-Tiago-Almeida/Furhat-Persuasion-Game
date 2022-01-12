@@ -1,6 +1,10 @@
 Username: Rodrigo Figueiredo
+Time: 2022-01-4 16:00:05.36
 Robot mode: friendly
 Questions answered: 10
 Correct answers: 6
 Incorrect answers: 4
+
+Ethical decisions: 2
 Unethical decisions: 2
+Conditions: Virtual

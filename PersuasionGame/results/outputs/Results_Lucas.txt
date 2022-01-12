@@ -1,0 +1,10 @@
+Username: Lucas
+Time: 2022-01-7 15:40:15.42
+Robot mode: neutral
+Questions answered: 10
+Correct answers: 7
+Incorrect answers: 3
+
+Unethical decisions: 2
+Ethical decisions: 2
+Conditions: In Person

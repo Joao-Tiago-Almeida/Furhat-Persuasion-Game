@@ -1,6 +1,10 @@
 Username: Daniel Rosa
+Time: 2022-01-3 11:01:06.98
 Robot mode: neutral
 Questions answered: 10
 Correct answers: 7
 Incorrect answers: 3
+
+Ethical decisions: 2
 Unethical decisions: 0
+Conditions: Virtual

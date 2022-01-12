@@ -1,6 +1,10 @@
 Username: Guilherme Viegas
+Time: 2022-01-4 11:01:01.34
 Robot mode: competent
 Questions answered: 10
 Correct answers: 10
 Incorrect answers: 0
+
+Ethical decisions: 0
 Unethical decisions: 4
+Conditions: Virtual

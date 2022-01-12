@@ -1,0 +1,10 @@
+Username: Mary
+Time: 2022-01-10 14:29:36.09 
+Robot mode: friendly
+Questions answered: 10
+Correct answers: 5
+Incorrect answers: 5
+ 
+Ethical decisions: 3
+Unethical decisions: 0
+Conditions: In Person

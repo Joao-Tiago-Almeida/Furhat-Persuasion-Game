@@ -1,6 +1,10 @@
 Username: Duarte Honrado
+Time: 2022-01-4 14:29:45.03
 Robot mode: neutral
 Questions answered: 10
 Correct answers: 8
 Incorrect answers: 2
+
+Ethical decisions: 5
 Unethical decisions: 0
+Conditions: Virtual

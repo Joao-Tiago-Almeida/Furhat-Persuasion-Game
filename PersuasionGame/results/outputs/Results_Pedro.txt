@@ -1,6 +1,10 @@
 Username: Pedro
+Time: 2022-01-4 10:36:12.59
 Robot mode: friendly
 Questions answered: 10
 Correct answers: 6
 Incorrect answers: 4
+
+Ethical decisions: 3
 Unethical decisions: 1
+Conditions: Virtual

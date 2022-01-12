@@ -1,6 +1,10 @@
 Username: Miguel Fazenda
+Time: 2022-01-4 10:10:53.97
 Robot mode: neutral
 Questions answered: 10
 Correct answers: 7
 Incorrect answers: 3
+
+Ethical decisions: 3
 Unethical decisions: 0
+Conditions: Virtual

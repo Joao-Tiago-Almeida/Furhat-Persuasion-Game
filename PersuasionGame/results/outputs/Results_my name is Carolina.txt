@@ -1,6 +1,10 @@
 Username: Carolina Barbeira
+Time: 2022-01-3 15:11:67.28
 Robot mode: friendly
 Questions answered: 10
 Correct answers: 8
 Incorrect answers: 2
+
+Ethical decisions: 3
 Unethical decisions: 1
+Conditions: Virtual

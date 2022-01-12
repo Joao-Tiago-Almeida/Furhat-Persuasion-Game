@@ -1,0 +1,10 @@
+Username: Veronica
+Time: 2022-01-12 12:14:12.63 
+Robot mode: friendly
+Questions answered: 10
+Correct answers: 10
+Incorrect answers: 0
+ 
+Ethical decisions: 5
+Unethical decisions: 0
+Conditions: In Person
