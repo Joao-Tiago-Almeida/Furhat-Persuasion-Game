@@ -69,7 +69,6 @@ Initiate start of the game
  */
 val StartGame : State = state{
     onEntry {
-        //ToDo: Make sure to set right mode (either: neutral/friendly/competent)
         users.current.mode = "friendly"
         users.current.questions_answered = 0
         furhat.say(

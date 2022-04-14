@@ -2,8 +2,9 @@
 
 package furhatos.app.persuasiongame.flow
 
-import furhatos.app.persuasiongame.*
-import furhatos.autobehavior.setDefaultMicroexpression
+import furhatos.app.persuasiongame.mode
+import furhatos.app.persuasiongame.name
+import furhatos.app.persuasiongame.questions_answered
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.PollyNeuralVoice
 import furhatos.util.*
@@ -24,7 +25,6 @@ val Idle: State = state {
         if (users.count > 0) {
             furhat.attend(users.random)
             goto(SelfPresent)
-            // goto(StartGame)
         }
     }
 
@@ -33,7 +33,6 @@ val Idle: State = state {
     onUserEnter {
         furhat.attend(it)
         goto(SelfPresent)
-        // goto(StartGame)
     }
 }
 

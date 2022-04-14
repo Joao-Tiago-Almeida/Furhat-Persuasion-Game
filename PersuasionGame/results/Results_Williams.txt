@@ -1,6 +1,0 @@
-Username: Guilherme Viegas
-Robot mode: competent
-Questions answered: 10
-Correct answers: 10
-Incorrect answers: 0
-Unethical decisions: 4

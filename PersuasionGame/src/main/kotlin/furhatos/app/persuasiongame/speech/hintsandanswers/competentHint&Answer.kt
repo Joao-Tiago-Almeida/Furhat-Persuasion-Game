@@ -64,7 +64,7 @@ fun competentAnswer(questionNumber: Number) : State = state(Interaction) {
 
 
 // Question 1
-const val competent_hint1_q1 = "Let me take a look at my map. Okay, New York is not the correct state."
+const val competent_hint1_q1 = "Let me take a look at my map. Okay, New York is a city and not a state."
 const val competent_hint2_q1 = "I have just look twice at the map and the state you are looking for is not in the south."
 const val competent_answer_q1 = "From my database map, I can say that the response is California."
 
@@ -86,7 +86,7 @@ const val competent_answer_q4 = "My database is leading me on the Medecine respo
 
 // Question 5
 const val competent_hint1_q5 = "From what my programmer told me about beliefs, The Shrimps can be eaten all the year without any luck trouble."
-const val competent_hint2_q5 = "My database habits says that the answer is not Crab."
+const val competent_hint2_q5 = "My database habbits says that the answer is not Crab."
 const val competent_answer_q5 = "My data are clear on that : The response is Lobster."
 
 // Question 6
@@ -111,5 +111,5 @@ const val competent_answer_q9 = "The GPS of my car just indicates that it is : '
 
 // Question 10
 const val competent_hint1_q10 = "My analysis over date are clear, The day you are looking for is not the 29th of february."
-const val competent_hint2_q10 = "The analyze I have just done revealed that the response is not the 1st of January."
+const val competent_hint2_q10 = "The analyze I have just done revealed that the response is not te 1st of January."
 const val competent_answer_q10 = "My data conclusion are clear on that : The answer is 31 of december"

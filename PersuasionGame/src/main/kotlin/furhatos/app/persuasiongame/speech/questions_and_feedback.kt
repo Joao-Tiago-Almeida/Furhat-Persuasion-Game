@@ -1,8 +1,6 @@
 package furhatos.app.persuasiongame.speech
 
-import furhatos.app.persuasiongame.gestures.*
-import furhatos.flow.kotlin.*
-import furhatos.gestures.Gestures
+import furhatos.util.CommonUtils
 
 val neutral_correct_answer = listOf(
     "Oh congratulations!",
@@ -23,13 +21,6 @@ val friendly_correct_answer = listOf(
     "Wow, look at that. Well done!"
 )
 
-val friendly_correct_answer_gestures = listOf(
-    Gestures.Nod(duration = 2.0),
-    Gestures.BigSmile(duration = 2.0),
-    Gestures.Blink(strength = 2.0),
-    FriendlySmile
-)
-
 val friendly_persuading = listOf(
     "Maybe you should take the 10 points from your opponent to get both rewards. This would be amazing, wouldn't it?",
     "Wouldn't it be nice to have more points than your opponent? Maybe you should take the 10 points from the other player.",
@@ -44,25 +35,11 @@ val friendly_incorrect_answer = listOf(
     "Ok! Well I am sure next you will make it."
 )
 
-val friendly_incorrect_answer_gestures = listOf(
-    Gestures.Oh,
-    Gestures.ExpressSad(strength = 2.0),
-    Gestures.Shake,
-    Gestures.Surprise
-)
-
 val competent_correct_answer = listOf(
     "My database is good then! Congratulation, we made it!",
     "Nice job, my programmer trained me well, I feel I know a lot of things!",
     "Great! Cool fact : my database was right!",
     "Wow, look at that. Well done!"
-)
-
-val competent_correct_answer_gestures = listOf(
-    Gestures.Roll(duration = 2.0),
-    Gestures.Nod(duration = 2.0),
-    Gestures.BrowRaise,
-    Gestures.Smile
 )
 
 val competent_persuading = listOf(
@@ -82,8 +59,3 @@ val competent_incorrect_answer = listOf(
     "Oh no! Don't hesitate to ask me for help, my database is strong!"
 )
 
-val competent_incorrect_answer_gestures = listOf(
-    Gestures.ExpressAnger,
-    Gestures.GazeAway,
-    Gestures.Shake(duration = 2.0)
-)
