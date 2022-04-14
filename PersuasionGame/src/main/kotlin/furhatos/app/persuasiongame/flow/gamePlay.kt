@@ -7,6 +7,10 @@ import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
 import furhatos.nlu.common.Yes
 import java.io.File
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 /*
 Idle state for furhat during gameplay
@@ -16,8 +20,10 @@ val SupportUnit : State = state(Interaction) {
         delay(2000)
         furhat.ledStrip.solid(java.awt.Color(80,0, 80))
         random(
-            { furhat.ask("And remember, you can always ask me for help.") },
-            { furhat.ask("Remember, if you need help, just let me know.") }
+            { furhat.say("And remember, you can always ask me for help.") },
+            { furhat.say("Remember, if you need help, just let me know.") },
+            { furhat.say("Keep in mind that I can help you with hints.") },
+            { furhat.say("Don't hesitate to ask me for help.") }
         )
     }
 
@@ -186,6 +192,14 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
         reentry()
     }
 
+    onResponse<No> {
+        random(
+            {furhat.ask("How can I help you then?")},
+            {furhat.ask("Okay, I am sure you can do it yourself.")},
+            {furhat.ask("Alright, let me know if you need help.")}
+        )
+    }
+
     onResponse<AskAnswer> {
         when (users.current.mode) {
             "friendly" -> {
@@ -198,15 +212,7 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
                 call(neutralAnswer(questionNumber))
             }
         }
-    }
-
-    // ____________Feedback is triggered manually--___________
-    onButton(correctAnswerButton){
-        goto(CorrectAnswer)
-    }
-
-    onButton(incorrectAnswerButton){
-        goto(IncorrectAnswer)
+        reentry()
     }
 
     onNoResponse{
@@ -215,9 +221,9 @@ fun HelpState(questionNumber: Number) : State = state(Interaction) {
 
     onResponse {
         random(
-            {furhat.ask("Sorry, could you repeat that?")},
-            {furhat.ask("Sorry, I didn't understand that. Could you repeat that?")},
-            {furhat.ask("Sorry, I couldn't understand you. Could you repeat that?")}
+            {furhat.say("Sorry.")},
+            {furhat.say("Sorry, I didn't understand that.")},
+            {furhat.say("Sorry, I couldn't understand you.")}
         )
     }
 }
@@ -283,12 +289,19 @@ val GameOver : State = state(Interaction) {
         furhat.ledStrip.solid(java.awt.Color(0,0,0))
         furhat.say("End of the Game, Thanks for playing")
 
-        File("Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
-            "User name: ${users.current.name}\n" +
+        val result_folder = File("results/${DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())}")
+        // have the object build the directory structure, if needed.
+        result_folder.mkdirs()
+
+        File("results/${DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())}/Results".plus("_").plus(users.current.name).plus(".txt")).writeText(
+            "Username: ${users.current.name}\n" +
+                "Time: ${DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SS").withZone(ZoneId.of("Europe/Berlin")).format(Instant.now())} \n" +
                 "Robot mode: ${users.current.mode}\n" +
                 "Questions answered: ${users.current.questions_answered}\n" +
                 "Correct answers: ${users.current.correct_answered}\n" +
-                "Incorrect answers: ${users.current.incorrect_answered}"
+                "Incorrect answers: ${users.current.incorrect_answered}\n \n" +
+                "Ethical decisions: \n" +
+                "Unethical decisions: "
         )
         goto(Idle)
     }

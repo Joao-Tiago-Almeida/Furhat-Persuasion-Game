@@ -17,7 +17,8 @@ val Idle: State = state {
         // Set furhat's voice, mask and face
         furhat.voice = PollyNeuralVoice.Joey()
         furhat.setMask("adult")
-        furhat.setCharacter("Jamie")
+        furhat.setCharacter("August")
+        furhat.setDefaultMicroexpression(blinking = true, facialMovements= true, eyeMovements = true)
         delay(600)
 
         // if users present
@@ -50,10 +51,6 @@ val Interaction: State = state {
             } else {
                 furhat.glance(it)
             }
-        } else {
-            furhat.stopSpeaking()
-            furhat.stopListening()
-            goto(GameOver)
         }
     }
 
@@ -65,4 +62,27 @@ val Interaction: State = state {
         goto(GameOver)
     }
 
+    onButton("Yes") {
+        random(
+            { furhat.say("Yes!") },
+            { furhat.say("Yes, ${users.current.name}.") }
+        )
+        furhat.listen(5000)
+    }
+
+    onButton("No") {
+        random(
+            { furhat.say("No!") },
+            { furhat.say("No, ${users.current.name}.") }
+        )
+        furhat.listen(5000)
+    }
+
+    onButton("Say Question Number") {
+        random(
+            { furhat.say("Sorry, please tell me the question's number when asking for help.") },
+            { furhat.say("Sorry, ${users.current.name}. Could you tell me the question number first?") }
+        )
+        furhat.listen(5000)
+    }
 }
